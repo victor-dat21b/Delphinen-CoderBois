@@ -10,7 +10,15 @@ public class UserInterface {
         startScreen();
         boolean gameFlag = true;
         while (gameFlag) {
-            System.out.println("Please choose an option:\n" + "1 for new member. 2 for economy. 3 to see members. 4 for turnament times.");
+            System.out.println("""
+                    1: New Member.
+                    2: Get Economy.
+                    3: List of Members.
+                    4: Tournament Times.
+                    5: Training Times.
+                    6: Top 5 Times.
+                    0: Close Program.""");
+            System.out.print("Choice: ");
             if (this.in.hasNextInt()){
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
