@@ -3,7 +3,6 @@ public class UserInterface {
 
     public void startGame() {
         Scanner in = new Scanner(System.in);
-        new UserInterface().
         System.out.println("You were out hiking with some friends, when you suddenly fell down a hole.");
         boolean gameFlag = true;
         while (gameFlag) {
@@ -18,7 +17,8 @@ public class UserInterface {
                 gameFlag = false;
                 System.out.println("You exited the game.");
             }
-
+        }
+    }
             public void startScreen() {
                 StringBuilder buildingString = new StringBuilder();
                 buildingString.append("-----------------------------------------------");
@@ -31,6 +31,5 @@ public class UserInterface {
                 System.out.println(buildingString);
             }
 
-        }
+
     }
-}
