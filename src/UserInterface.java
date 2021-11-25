@@ -23,6 +23,8 @@ public class UserInterface {
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
                     System.out.println("Opret nyt medlem");
+
+                    //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
                     System.out.println("Se økonomi");
                 }else if (userInput == 3){
