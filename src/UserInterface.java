@@ -1,13 +1,17 @@
+import javax.xml.crypto.Data;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
         new UserInterface().startProgram();
+
+
     }
 
     public void startProgram() {
         startScreen();
+        System.out.println(new Database().readFile());
         boolean gameFlag = true;
         while (gameFlag) {
             System.out.println("""
