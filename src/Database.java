@@ -20,7 +20,7 @@ public class Database {
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()){
                 String[] data = myReader.nextLine().split(",");
-                Member myMember = new Exerciser(data[0], Integer.valueOf(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
+                Member myMember = new Exerciser(data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
                 myMembers.add(myMember);
             }
         }
