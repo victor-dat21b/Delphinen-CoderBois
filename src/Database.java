@@ -1,3 +1,5 @@
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
@@ -10,7 +12,7 @@ public class Database {
 
     }
 
-    public List readFile(){
+    public ArrayList<Member> readFile(){
 
         return null;
     }
