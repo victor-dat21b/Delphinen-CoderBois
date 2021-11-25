@@ -5,6 +5,13 @@ public abstract class Member {
     private boolean active;
     private boolean arrears;
 
+    public Member(String name, int age, boolean active, boolean arrears){
+        this.name = name;
+        this.age = age;
+        this.active = active;
+        this.arrears = arrears;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

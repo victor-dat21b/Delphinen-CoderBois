@@ -2,40 +2,40 @@ import java.util.List;
 
 public class Database {
 
-    void getMemberList(){
+    public void getMemberList(){
 
     }
 
-    void setSwimmerTime(){
+    public void setSwimmerTime(){
 
     }
 
-    List readFile(){
+    public List readFile(){
 
         return null;
     }
 
-    void writeFile(){
+    public void writeFile(){
 
     }
 
-    void getTopFive(){
+    public void getTopFive(){
 
     }
 
-    void saveMember(Member member){
+    public void saveMember(Member member){
 
     }
 
-    void createMember(){
+    public void createMember(){
 
     }
 
-    void calculateIncome(){
+    public void calculateIncome(){
 
     }
 
-    void calculateArrears(){
+    public void calculateArrears(){
 
     }
 
