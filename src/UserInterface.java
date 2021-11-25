@@ -43,27 +43,23 @@ public class UserInterface {
 
                 else if (userInput == 0) {
                     gameFlag = false;
-                    System.out.println("You exited the game.");
+                    System.out.println("Du har lukket programmet!");
                 } else{
-                    System.out.println("Wrong input, try again.");
+                    System.out.println("Forkert input, prøv igen!");
                 }
             } else if (in.hasNextLine()){
-                System.out.println("Error, try again.");
+                System.out.println("Fejl, prøv igen!");
                 in.next();
             }
 
         }
     }
             public void startScreen() {
-                StringBuilder buildingString = new StringBuilder();
-                buildingString.append("-----------------------------------------------");
-                buildingString.append(System.getProperty("line.separator"));
-                buildingString.append("                  Welcome to:          ");
-                buildingString.append(System.getProperty("line.separator"));
-                buildingString.append("            Svømmeklubben Delphinen             ");
-                buildingString.append(System.getProperty("line.separator"));
-                buildingString.append("-----------------------------------------------");
-                System.out.println(buildingString);
+                System.out.println("""
+                        --------------------------------------------------
+                                   Velkommen til Svømmeklubben
+                                          DELFINEN
+                        --------------------------------------------------""");
             }
 
 
