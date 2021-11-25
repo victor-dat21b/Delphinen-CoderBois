@@ -16,9 +16,11 @@ public class Database {
     public ArrayList<Member> readFile(){
         ArrayList<Member> myMembers = new ArrayList<>();
         try {
-            Scanner myReader = new Scanner(new File("members.csv"));
+            File myFile = new File("members.csv");
+            Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()){
-                Member myMember = new Exerciser(myReader.next(), myReader.nextInt(), myReader.nextBoolean(), myReader.nextBoolean());
+                String[] data = myReader.nextLine().split(",");
+                Member myMember = new Exerciser(data[0], Integer.getInteger(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
                 myMembers.add(myMember);
             }
         }
