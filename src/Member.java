@@ -43,4 +43,9 @@ public abstract class Member {
     public boolean getArrears () {
         return arrears;
     }
+
+    @Override
+    public String toString() {
+        return "name: " + name + "\nage: " + age + "\nActive: " + active + "\nIn arrer: " + arrears + "\n";
+    }
 }
