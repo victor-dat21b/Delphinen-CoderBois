@@ -43,8 +43,12 @@ public class Database {
 
     }
 
-    public void createMember(){
-
+    public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<int[]> disciplineAndTime){
+        if(disciplineAndTime == null){
+            //Motionist
+        }else{
+            //Competitor
+        }
     }
 
     public void calculateIncome(){
