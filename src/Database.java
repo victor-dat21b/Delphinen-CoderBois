@@ -19,8 +19,8 @@ public class Database {
             File myFile = new File("members.csv");
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()){
-                String[] data = myReader.nextLine().split(";");
-                Member myMember = new Exerciser(data[0], Integer.getInteger(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
+                String[] data = myReader.nextLine().split(",");
+                Member myMember = new Exerciser(data[0], Integer.valueOf(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
                 myMembers.add(myMember);
             }
         }
