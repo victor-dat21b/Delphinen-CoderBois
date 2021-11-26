@@ -8,7 +8,11 @@ public class DolphinController {
         return null;
     }
 
-    public void setSwimmerTime(){
+    public void setTrainingTime(){
+
+    }
+
+    public void setCompetitiveTime(){
 
     }
 
