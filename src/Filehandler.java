@@ -2,7 +2,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Database {
+public class Filehandler {
 
 
     public ArrayList<Member> readExerciserFile(){
@@ -24,8 +24,11 @@ public class Database {
     }
 
     public ArrayList<Member> readCompetitorFile(){
-        //OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
-        //bliver derfor ikke gemt. Vi gemmer kun ét stævne.
+        /*
+        OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
+        bliver derfor ikke gemt. Vi gemmer kun ét stævne.
+        */
+
         ArrayList<Member> myMembers = new ArrayList<>();
         try {
             File myFile = new File("competitors.csv");
