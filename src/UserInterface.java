@@ -2,7 +2,7 @@ import javax.xml.crypto.Data;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
-
+    DolphinController controller = new DolphinController();
     public static void main(String[] args) {
         new UserInterface().startProgram();
 
@@ -26,6 +26,7 @@ public class UserInterface {
                 if (userInput == 1) {
                     System.out.println("Opret nyt medlem");
 
+                   // controller.createMember();
                     //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
                     System.out.println("Se økonomi");
