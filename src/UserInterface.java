@@ -1,4 +1,5 @@
 import javax.xml.crypto.Data;
+import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
@@ -24,17 +25,17 @@ public class UserInterface {
             if (this.in.hasNextInt()){
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
-                    System.out.println("Opret nyt medlem");
+                    option1();
 
-                   // controller.createMember();
                     //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
                     System.out.println("Se økonomi");
                 }else if (userInput == 3){
                     System.out.println("Motionister");
-                    System.out.println(new Database().readExerciserFile());
+                    System.out.println(new Database().readCompetitorFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
+
                 }else if (userInput == 5){
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
@@ -60,6 +61,41 @@ public class UserInterface {
                                    Velkommen til Svømmeklubben
                                           DELFINEN
                         --------------------------------------------------""");
+            }
+
+            public void option1(){
+
+
+                System.out.println("Opret nyt medlem");
+                in.nextLine();
+                System.out.println("Navn:");
+                String name = in.nextLine();
+
+                System.out.println("Alder:");
+                int age = Integer.parseInt(in.nextLine());
+
+                System.out.println("Er medlemmet aktivt?");
+                Boolean isActive = null;
+                String answer = in.nextLine();
+                isActive = answer.equalsIgnoreCase("ja");
+
+                if(!isActive){
+                    System.out.println("Medlem oprettet!");
+                    controller.createMember(name, age, isActive, false, null);
+                    new UserInterface().startProgram();
+                }
+
+                System.out.println("Ønsker medlemmet at være konkurrence svømmer?");
+                answer = in.nextLine();
+                if(answer.equalsIgnoreCase("ja")){
+                    controller.createMember(name, age, isActive, false, new ArrayList<double[]>());
+                }else{
+                    controller.createMember(name, age, isActive, false, null);
+                }
+
+                System.out.println("Medlem oprettet!");
+
+
             }
 
 
