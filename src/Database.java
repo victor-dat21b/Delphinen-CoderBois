@@ -31,22 +31,25 @@ public class Database {
     }
 
     public ArrayList<Member> readCompetitorFile(){
+        //OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
+        //bliver derfor ikke gemt. Vi gemmer kun ét stævne.
         ArrayList<Member> myMembers = new ArrayList<>();
         try {
-            File myFile = new File("Competitor.csv");
+            File myFile = new File("competitors.csv");
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()){
                 String[] data = myReader.nextLine().split(",");
-                Competitor myCompetitor = new Competitor(data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]), Integer.parseInt(data[4]));
-                if (myCompetitor.getAmountDiscipline() == 1){
-
-                }else if(myCompetitor.getAmountDiscipline() == 2){
-
-                }else if(myCompetitor.getAmountDiscipline() == 3){
-
-                }else if(myCompetitor.getAmountDiscipline() == 4){
-
+                Competitor myCompetitor = new Competitor(data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]), Integer.parseInt(data[4]), Integer.parseInt(data[5]));
+                int counterString = 6;
+                int counterTime = 7;
+                int counterDate = 8;
+                for (int i = 0; i != myCompetitor.getAmountTrainingDiscipline(); i++){
+                    myCompetitor.setDisciplineTime(data[counterString], data[counterTime], data[counterDate]);
+                    counterString = counterString + 2;
+                    counterTime = counterTime + 2;
+                    counterDate = counterDate + 2;
                 }
+                System.out.println(myCompetitor);
             }
         }
         catch (Exception e){
