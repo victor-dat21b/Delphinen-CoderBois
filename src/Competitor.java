@@ -44,14 +44,13 @@ public class Competitor extends Member implements Comparable<Competitor>{
 
     @Override
     public String toString() {
-        return "Competitor{" +
-                "amountTrainingDiscipline=" + amountTrainingDiscipline +
-                ", amountOfTournaments=" + amountOfTournaments +
-                ", crawl=" + crawl +
-                ", rygcrawl=" + rygcrawl +
-                ", brystsvømning=" + brystsvømning +
-                ", butterfly=" + butterfly +
-                '}';
+        return "Navn = " + super.getName() +
+                ". Aktive Discipliner = " + amountTrainingDiscipline +
+                ". Antal Turneringer = " + amountOfTournaments +
+                ". " + crawl +
+                ". " + rygcrawl +
+                ". " + brystsvømning +
+                ". " + butterfly + ".\n";
     }
 
     @Override

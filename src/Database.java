@@ -67,9 +67,6 @@ public class Database {
 
     }
 
-    public void saveMember(Member member){
-
-    }
 
     public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
         if(disciplineAndTime == null){
