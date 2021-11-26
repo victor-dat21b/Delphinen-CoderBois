@@ -6,7 +6,6 @@ public class UserInterface {
     public static void main(String[] args) {
         new UserInterface().startProgram();
 
-
     }
 
     public void startProgram() {
@@ -14,14 +13,14 @@ public class UserInterface {
         boolean gameFlag = true;
         while (gameFlag) {
             System.out.println("""
-                    1: New Member.
-                    2: Get Economy.
-                    3: List of Members.
-                    4: Tournament Times.
-                    5: Training Times.
-                    6: Top 5 Times.
-                    0: Close Program.""");
-            System.out.print("Choice: ");
+                    1: Nyt medlem.
+                    2: Se økonomi.
+                    3: Liste over medlemmer.
+                    4: Turnerings svømmetider.
+                    5: Trænings svømmetider.
+                    6: Top 5 tider.
+                    0: Luk program.""");
+            System.out.print("Valg: ");
             if (this.in.hasNextInt()){
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
