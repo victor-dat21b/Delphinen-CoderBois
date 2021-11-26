@@ -4,13 +4,6 @@ import java.util.Scanner;
 
 public class Database {
 
-    public void getMemberList(){
-
-    }
-
-    public void setSwimmerTime(){
-
-    }
 
     public ArrayList<Member> readExerciserFile(){
         ArrayList<Member> myMembers = new ArrayList<>();
@@ -59,32 +52,16 @@ public class Database {
         return myMembers;
     }
 
-    public void writeFile(){
+
+    public void writeExerciserFile(){
 
     }
 
-    public void getTopFive(){
+    public void writeCompetitorFile(){
 
     }
 
 
-    public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
-        if(disciplineAndTime == null){
-            //Motionist
-            System.out.println("Mos");
-        }else{
-            System.out.println("Comp");
-            //Competitor
-        }
-    }
-
-    public void calculateIncome(){
-
-    }
-
-    public void calculateArrears(){
-
-    }
 
 
 }
