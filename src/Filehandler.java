@@ -56,11 +56,11 @@ public class Filehandler {
     }
 
 
-    public void writeExerciserFile(){
+    public void writeExerciserFile(Exerciser exerciser){
 
     }
 
-    public void writeCompetitorFile(){
+    public void writeCompetitorFile(Competitor competitor){
 
     }
 
