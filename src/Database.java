@@ -49,7 +49,7 @@ public class Database {
                     counterTime = counterTime + 3;
                     counterDate = counterDate + 3;
                 }
-                System.out.println(myCompetitor);
+                myMembers.add(myCompetitor);
             }
         }
         catch (Exception e){
