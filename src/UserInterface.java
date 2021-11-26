@@ -31,7 +31,7 @@ public class UserInterface {
                     System.out.println("Se økonomi");
                 }else if (userInput == 3){
                     System.out.println("Motionister");
-                    System.out.println(new Database().readFile());
+                    System.out.println(new Database().readExerciserFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
                 }else if (userInput == 5){
