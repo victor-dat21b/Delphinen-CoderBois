@@ -45,9 +45,9 @@ public class Database {
                 int counterDate = 8;
                 for (int i = 0; i != myCompetitor.getAmountTrainingDiscipline(); i++){
                     myCompetitor.setDisciplineTime(data[counterString], data[counterTime], data[counterDate]);
-                    counterString = counterString + 2;
-                    counterTime = counterTime + 2;
-                    counterDate = counterDate + 2;
+                    counterString = counterString + 3;
+                    counterTime = counterTime + 3;
+                    counterDate = counterDate + 3;
                 }
                 System.out.println(myCompetitor);
             }

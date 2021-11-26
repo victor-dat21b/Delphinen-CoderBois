@@ -35,6 +35,7 @@ public class UserInterface {
                     System.out.println(new Database().readExerciserFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
+                    System.out.println(new Database().readCompetitorFile());
                 }else if (userInput == 5){
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
