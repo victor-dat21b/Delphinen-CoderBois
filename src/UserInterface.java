@@ -11,7 +11,6 @@ public class UserInterface {
 
     public void startProgram() {
         startScreen();
-        System.out.println(new Database().readFile());
         boolean gameFlag = true;
         while (gameFlag) {
             System.out.println("""
@@ -32,7 +31,8 @@ public class UserInterface {
                 } else if (userInput == 2){
                     System.out.println("Se økonomi");
                 }else if (userInput == 3){
-                    System.out.println("Se medlemmer");
+                    System.out.println("Motionister");
+                    System.out.println(new Database().readFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
                 }else if (userInput == 5){

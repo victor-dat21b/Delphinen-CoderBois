@@ -46,6 +46,6 @@ public abstract class Member {
 
     @Override
     public String toString() {
-        return "name: " + name + "\nage: " + age + "\nActive: " + active + "\nIn arrer: " + arrears + "\n";
+        return "Name: " + name + ". Age: " + age + ". Active: " + active + ". arrear: " + arrears + "\n\n";
     }
 }
