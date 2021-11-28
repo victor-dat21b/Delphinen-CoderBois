@@ -2,16 +2,18 @@ import java.util.ArrayList;
 
 public class DolphinDomain {
 
-    Filehandler files = new Filehandler();
+    FileHandler files = new FileHandler();
 
-    public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
+    public String createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){//Troels
         if(disciplineAndTime == null){
             //Motionist
-            System.out.println("Mos");
+            Exerciser exerciser = new Exerciser(name, age, active, arrears);
+            return files.writeExerciserFile(exerciser);
         }else{
             System.out.println("Comp");
             //Competitor
         }
+        return "Intet medlem blev sendt over";
     }
 
 }

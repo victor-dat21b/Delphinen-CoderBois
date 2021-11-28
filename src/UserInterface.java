@@ -31,7 +31,7 @@ public class UserInterface {
                     System.out.println("Se økonomi");
                 }else if (userInput == 3){
                     System.out.println("Motionister");
-                    System.out.println(new Filehandler().readCompetitorFile());
+                    System.out.println(new FileHandler().readCompetitorFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
 
@@ -62,7 +62,7 @@ public class UserInterface {
                         --------------------------------------------------""");
             }
 
-            public void option1(){
+            public void option1(){//Troels
 
 
                 System.out.println("Opret nyt medlem");
@@ -80,7 +80,8 @@ public class UserInterface {
 
                 if(!isActive){
                     System.out.println("Medlem oprettet!");
-                    controller.createMember(name, age, isActive, false, null);
+                    System.out.println(controller.createMember(name, age, isActive, false, null));
+
                     new UserInterface().startProgram();
                 }
 
@@ -89,11 +90,8 @@ public class UserInterface {
                 if(answer.equalsIgnoreCase("ja")){
                     controller.createMember(name, age, isActive, false, new ArrayList<double[]>());
                 }else{
-                    controller.createMember(name, age, isActive, false, null);
+                    System.out.println(controller.createMember(name, age, isActive, false, null));
                 }
-
-                System.out.println("Medlem oprettet!");
-
 
             }
 

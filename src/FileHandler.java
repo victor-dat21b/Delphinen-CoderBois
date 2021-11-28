@@ -1,9 +1,9 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Filehandler {
-
+public class FileHandler {
 
     public ArrayList<Member> readExerciserFile(){
         ArrayList<Member> myMembers = new ArrayList<>();
@@ -56,8 +56,37 @@ public class Filehandler {
     }
 
 
-    public void writeExerciserFile(Exerciser exerciser){
+    public String writeExerciserFile(Exerciser exerciser){//Troels
 
+        try {
+            FileWriter writer = new FileWriter("Exerciser.csv");
+            String stringInfo = exerciser.getName() +
+                    ',' +
+                    exerciser.getAge() +
+                    ',' +
+                    exerciser.getActive() +
+                    ',' +
+                    exerciser.getArrears() +
+                    '\n';
+
+
+            try {
+                File myFile = new File("Exerciser.csv");
+                Scanner myReader = new Scanner(myFile);
+                while (myReader.hasNextLine()){
+                    if(!myReader.hasNextLine()){
+                        writer.append(stringInfo);
+                    }
+                }
+            }catch (Exception e){
+                System.out.println("Ingen filer tilgængelige");
+            }
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt...");
+        }
+
+        return "Medlem bliv oprettet!";
     }
 
     public void writeCompetitorFile(Competitor competitor){
