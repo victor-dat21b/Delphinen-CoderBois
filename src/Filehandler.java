@@ -46,25 +46,6 @@ public class Filehandler {
                     counterTime = counterTime + 3;
                     counterDate = counterDate + 3;
                 }
-                if (myCompetitor.getCrawl().size() == 1){
-                    myCompetitor.setDisciplineTime("crawl", "00.00", "00-00-0000");
-                } else if (myCompetitor.getRygcrawl().size() == 1){
-                    myCompetitor.setDisciplineTime("rygcrawl", "00.00", "00-00-0000");
-                }else if (myCompetitor.getButterfly().size() == 1){
-                    myCompetitor.setDisciplineTime("butterfly", "00.00", "00-00-0000");
-                }else if (myCompetitor.getBrystsvømning().size() == 1){
-                    myCompetitor.setDisciplineTime("brystsvømning", "00.00", "00-00-0000");
-                }
-                if (myCompetitor.getCrawl().size() == 1){
-                    myCompetitor.setDisciplineTime("crawl", "00.00", "00-00-0000");
-                } else if (myCompetitor.getRygcrawl().size() == 1){
-                    myCompetitor.setDisciplineTime("rygcrawl", "00.00", "00-00-0000");
-                }else if (myCompetitor.getButterfly().size() == 1){
-                    myCompetitor.setDisciplineTime("butterfly", "00.00", "00-00-0000");
-                }else if (myCompetitor.getBrystsvømning().size() == 1){
-                    myCompetitor.setDisciplineTime("brystsvømning", "00.00", "00-00-0000");
-                }
-
                 myMembers.add(myCompetitor);
             }
         }

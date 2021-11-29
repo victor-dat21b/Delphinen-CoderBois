@@ -79,14 +79,44 @@ public class Competitor extends Member implements Comparable<Competitor>{
         return toReturn;
     }
 
+    public boolean getEmptyBoolCrawl(){
+        Boolean thisBool = false;
+        if (this.crawl.get(1) == null){
+            thisBool = true;
+        }
+        return thisBool;
+    }
+    public Boolean getEmptyBoolRygcrawl(){
+    Boolean thisBool = false;
+        if (this.rygcrawl.get(1).isEmpty()){
+        thisBool = true;
+    }
+        return thisBool;
+}
+    public Boolean getEmptyBoolBrystsvømning(){
+        Boolean thisBool = false;
+        if (this.brystsvømning.get(1).isEmpty()){
+            thisBool = true;
+        }
+        return thisBool;
+    }
+    public Boolean getEmptyBoolButterfly(){
+    Boolean thisBool = false;
+        if (this.butterfly.get(1).isEmpty()){
+            thisBool = true;
+        }
+        return thisBool;
+    }
+
+
     public ArrayList<String> getCrawl(){
         return this.crawl;
     }
-    public ArrayList<String> getRygcrawl(){
-        return this.rygcrawl;
-    }
     public ArrayList<String> getBrystsvømning(){
         return this.brystsvømning;
+    }
+    public ArrayList<String> getRygcrawl(){
+        return this.rygcrawl;
     }
     public ArrayList<String> getButterfly(){
         return this.butterfly;

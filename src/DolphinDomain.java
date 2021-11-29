@@ -19,18 +19,20 @@ public class DolphinDomain {
         }
     }
 
-/*
-Victors dank code
+
     public void comparecompetitors(){
         ComparatorRygcrawl myCompare = new ComparatorRygcrawl();
         ArrayList<Competitor> myArraylist = files.readCompetitorFile();
-        for (Competitor competitor){
+        ArrayList<Competitor> myListHalfSorted = new ArrayList<>();
+        System.out.println(myArraylist);
+        for (Competitor competitor : myArraylist){
+            if (competitor.getEmptyBoolCrawl()){
 
+            } else{
+                myListHalfSorted.add(competitor);
+            }
         }
-        System.out.println(myArraylist);
-
-        System.out.println(myArraylist);
-
+        System.out.println(myListHalfSorted);
 
 
     }
@@ -41,5 +43,5 @@ Victors dank code
     }
 
 
- */
+
 }
