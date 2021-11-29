@@ -40,7 +40,7 @@ public class Filehandler {
                 int counterTime = 7;
                 int counterDate = 8;
                 for (int i = 0; i != myCompetitor.getAmountTrainingDiscipline(); i++) {
-                    myCompetitor.setDisciplineTime(data[counterString], data[counterTime], data[counterDate]);
+                    myCompetitor.setDisciplineTime(data[counterString], Double.parseDouble(data[counterTime]), data[counterDate]);
                     counterString = counterString + 3;
                     counterTime = counterTime + 3;
                     counterDate = counterDate + 3;
