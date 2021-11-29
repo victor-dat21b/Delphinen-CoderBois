@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Competitor extends Member implements Comparable<Competitor>{
     private int amountTrainingDiscipline;
-    private int amountOfTournaments;
+    private boolean booleanTournmanetCheck;
     private ArrayList<String> crawl = new ArrayList<>();
     private ArrayList<String> rygcrawl = new ArrayList<>();
     private ArrayList<String> brystsvømning = new ArrayList<>();
@@ -10,10 +10,10 @@ public class Competitor extends Member implements Comparable<Competitor>{
     private ArrayList<String> tournamentInformation = new ArrayList<>();
 
 
-    public Competitor(String name, int age, boolean active, boolean arrears, int trainingDiscipline, int amountOfTournaments) {
+    public Competitor(String name, int age, boolean active, boolean arrears, int trainingDiscipline, boolean booleanTournmanetCheck) {
         super(name, age, active, arrears);
         this.amountTrainingDiscipline = trainingDiscipline;
-        this.amountOfTournaments = amountOfTournaments;
+        this.booleanTournmanetCheck = booleanTournmanetCheck;
         crawl.add("crawl");
         rygcrawl.add("rygcrawl");
         brystsvømning.add("brystsvømning");
@@ -40,19 +40,30 @@ public class Competitor extends Member implements Comparable<Competitor>{
         }
     }
 
-    public void setTournamentInformation(String name, String place, String time){
-
+    public void setTournamentInformation(String info){
+        this.tournamentInformation.add(info);
     }
 
     public int getAmountTrainingDiscipline(){
         return this.amountTrainingDiscipline;
     }
 
+
+
+
+
+    public boolean getTournamentCheck(){
+        return this.booleanTournmanetCheck;
+    }
+
+
+
+
     @Override
     public String toString() {
         return "Navn = " + super.getName() +
                 ". Aktive Discipliner = " + amountTrainingDiscipline +
-                ". Antal Turneringer = " + amountOfTournaments +
+                ". Antal Turneringer = " + booleanTournmanetCheck +
                 ". " + crawl +
                 ". " + rygcrawl +
                 ". " + brystsvømning +

@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 
 public class DolphinController {
+    private DolphinDomain domain = new DolphinDomain();
 
-    DolphinDomain domain = new DolphinDomain();
+
 
     public void getMemberList(){
 
@@ -21,11 +22,19 @@ public class DolphinController {
     }
 
     public void setCompetitiveTime(){
-
     }
 
-    public void getTopFive(){
+    public int calculateIncome(){
+        return domain.calculateIncome();
+    }
 
+
+
+    public void getTopFive(){
+    }
+
+    public String getArreas(){
+        return domain.getArreas();
     }
 
 
