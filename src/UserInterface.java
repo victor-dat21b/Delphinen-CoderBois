@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
     DolphinController controller = new DolphinController();
+    Filehandler files = new Filehandler();
     public static void main(String[] args) {
         new UserInterface().startProgram();
 
@@ -39,6 +40,7 @@ public class UserInterface {
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
                     System.out.println("Top 5 i tider");
+                    files.compareCrawl();
                 }
 
                 else if (userInput == 0) {

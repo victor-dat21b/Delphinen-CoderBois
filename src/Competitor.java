@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Competitor extends Member implements Comparable<Competitor>{
+    private String discipline;
+    private String time;
+    private Double timeFromString;
     private int amountTrainingDiscipline;
     private int amountOfTournaments;
     private ArrayList<String> crawl = new ArrayList<>();
@@ -8,6 +11,10 @@ public class Competitor extends Member implements Comparable<Competitor>{
     private ArrayList<String> brystsvømning = new ArrayList<>();
     private ArrayList<String> butterfly = new ArrayList<>();
     private ArrayList<String> tournamentInformation = new ArrayList<>();
+
+    public Competitor(){
+
+    }
 
 
     public Competitor(String name, int age, boolean active, boolean arrears, int trainingDiscipline, int amountOfTournaments) {
@@ -22,6 +29,8 @@ public class Competitor extends Member implements Comparable<Competitor>{
 
 
     public void setDisciplineTime(String discipline, String time, String dato){
+        this.discipline = discipline;
+        this.time = time;
         //switch der genkender disciplin type ud fra string og sætter tiden ud fra time
         if (discipline.equals(crawl.get(0))){
             crawl.add(time);
@@ -60,7 +69,17 @@ public class Competitor extends Member implements Comparable<Competitor>{
     }
 
     @Override
-    public int compareTo(Competitor otherCompetitor) {
-        return 0;
+    public int compareTo(Competitor c) {
+        int toReturn = 0;
+        timeFromString = Double.parseDouble(time);
+        if(discipline.equals(crawl.get(0))){
+            if(timeFromString < c.timeFromString){
+                toReturn = 1;
+            }
+            if(timeFromString > c.timeFromString){
+                toReturn = -1;
+            }
+        }
+        return toReturn;
     }
 }

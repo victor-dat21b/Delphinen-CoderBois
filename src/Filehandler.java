@@ -1,10 +1,10 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
 public class Filehandler {
-
 
     public ArrayList<Member> readExerciserFile(){
         ArrayList<Member> myMembers = new ArrayList<>();
@@ -24,13 +24,13 @@ public class Filehandler {
         return myMembers;
     }
 
-    public ArrayList<Member> readCompetitorFile(){
+    public ArrayList<Competitor> readCompetitorFile(){
         /*
-        OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
-        bliver derfor ikke gemt. Vi gemmer kun ét stævne.
+        OBS: Vi overwriter for hvert stævne en person har været til. Alle deres gamle stævne tider
+        bliver derfor ikke gemt. Hver person har derfor et enkelt "bedste resultat"
         */
 
-        ArrayList<Member> myMembers = new ArrayList<>();
+        ArrayList<Competitor> myMembers = new ArrayList<>();
         try {
             File myFile = new File("competitors.csv");
             Scanner myReader = new Scanner(myFile);
@@ -65,7 +65,7 @@ public class Filehandler {
 
     }
 
-
-
-
+    public void compareCrawl(){
+        Collections.sort(readCompetitorFile());
+    }
 }
