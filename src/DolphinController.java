@@ -8,9 +8,13 @@ public class DolphinController {
 
     }
 
-    public String createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
+    public String createMember(String name, int age, boolean active, boolean arrears, ArrayList<String> disciplineAndTime){
         return domain.createMember(name, age, active, arrears, disciplineAndTime);
 
+    }
+
+    public String createMember(String data){
+        return domain.creatMember(data);
     }
 
     public Member pickSwimmerFromList(){

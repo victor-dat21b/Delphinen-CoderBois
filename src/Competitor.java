@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Competitor extends Member implements Comparable<Competitor>{
     private int amountTrainingDiscipline;
-    private int amountOfTournaments;
+    private int amountOfTournaments = 0;
     private ArrayList<String> crawl = new ArrayList<>();
     private ArrayList<String> rygcrawl = new ArrayList<>();
     private ArrayList<String> brystsvømning = new ArrayList<>();
@@ -10,7 +10,7 @@ public class Competitor extends Member implements Comparable<Competitor>{
     private ArrayList<String> tournamentInformation = new ArrayList<>();
 
 
-    public Competitor(String name, int age, boolean active, boolean arrears, int trainingDiscipline, int amountOfTournaments) {
+    public Competitor(String name, int age, boolean active, boolean arrears, int trainingDiscipline) {
         super(name, age, active, arrears);
         this.amountTrainingDiscipline = trainingDiscipline;
         this.amountOfTournaments = amountOfTournaments;
@@ -47,6 +47,8 @@ public class Competitor extends Member implements Comparable<Competitor>{
     public int getAmountTrainingDiscipline(){
         return this.amountTrainingDiscipline;
     }
+
+    public int getAmountOfTournaments(){return this.amountOfTournaments;}
 
     @Override
     public String toString() {
