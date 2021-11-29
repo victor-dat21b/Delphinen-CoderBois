@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Competitor extends Member implements Comparable<Competitor>{
+public class Competitor extends Member{
     private String discipline;
     private String time;
     private Double timeFromString;
@@ -68,18 +68,19 @@ public class Competitor extends Member implements Comparable<Competitor>{
                 ". " + butterfly + ".\n";
     }
 
-    @Override
-    public int compareTo(Competitor c) {
-        int toReturn = 0;
-        timeFromString = Double.parseDouble(time);
-        if(discipline.equals(crawl.get(0))){
-            if(timeFromString < c.timeFromString){
-                toReturn = 1;
-            }
-            if(timeFromString > c.timeFromString){
-                toReturn = -1;
-            }
-        }
-        return toReturn;
+
+
+    public ArrayList<String> getCrawl(){
+        return this.crawl;
     }
+    public ArrayList<String> getRygcrawl(){
+        return this.rygcrawl;
+    }
+    public ArrayList<String> getBrystsvømning(){
+        return this.brystsvømning;
+    }
+    public ArrayList<String> getButterfly(){
+        return this.butterfly;
+    }
+
 }

@@ -1,6 +1,8 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Collections;
+import java.util.List;
 
 public class DolphinDomain {
 
@@ -17,5 +19,25 @@ public class DolphinDomain {
         }
     }
 
+
+
+    public void comparecompetitors(){
+        ComparatorRygcrawl myCompare = new ComparatorRygcrawl();
+        ArrayList<Competitor> myArraylist = files.readCompetitorFile();
+        for (Competitor competitor){
+
+        }
+        System.out.println(myArraylist);
+
+        System.out.println(myArraylist);
+
+
+
+    }
+
+
+    public static void main(String[] args) {
+        new DolphinDomain().comparecompetitors();
+    }
 
 }
