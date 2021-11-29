@@ -4,10 +4,10 @@ public class Competitor extends Member {
     private int amountTrainingDiscipline;
     private boolean booleanTournmanetCheck;
     ArrayList<String> tournamentInformation = new ArrayList<>();
-    private double crawlTime = 0;
-    private double rygCrawlTime = 0;
-    private double brystsvømningTime= 0;
-    private double butterflyTime = 0;
+    private double crawlTime = 0.0;
+    private double rygCrawlTime = 0.0;
+    private double brystsvømningTime= 0.0;
+    private double butterflyTime = 0.0;
 
     private String crawlDate;
     private String rygCrawlDate;
@@ -77,7 +77,11 @@ public class Competitor extends Member {
     public String toString() {
         return "Navn = " + super.getName() +
                 ". Aktive Discipliner = " + amountTrainingDiscipline +
-                ". Antal Turneringer = " + booleanTournmanetCheck;
+                ". Antal Turneringer = " + booleanTournmanetCheck +
+                ". Crawl = " + this.crawlTime +
+                ". Rygcrawl = " + this.rygCrawlTime +
+                ". Brystsvømning = " + this.brystsvømningTime +
+                ". Butterfly = " + this.butterflyTime + "\n";
     }
 }
 

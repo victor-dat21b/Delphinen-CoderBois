@@ -30,7 +30,8 @@ public class DolphinController {
 
 
 
-    public void getTopFive(){
+    public String getTopFive(){
+        return domain.getTopFive();
     }
 
     public String getArreas(){

@@ -31,7 +31,7 @@ public class UserInterface {
                 } else if (userInput == 2){
                     System.out.println("The expected income is = " + controller.calculateIncome());
                 }else if (userInput == 3){
-                    System.out.println("Motionister");
+                    System.out.println(new Filehandler().readExerciserFile());
                     System.out.println(new Filehandler().readCompetitorFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
@@ -39,7 +39,7 @@ public class UserInterface {
                 }else if (userInput == 5){
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
-                    System.out.println("Top 5 i tider");
+                    System.out.println(controller.getTopFive());
                 }else if (userInput == 7){
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());

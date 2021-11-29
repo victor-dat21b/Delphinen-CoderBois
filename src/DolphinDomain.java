@@ -1,5 +1,7 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class DolphinDomain {
 
@@ -19,7 +21,7 @@ public class DolphinDomain {
 
     public int calculateIncome(){
         int incomeCounter = 0;
-        ArrayList<Member> myCompetitors = files.readCompetitorFile();
+        ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
         myExercisors.addAll(myCompetitors);
         ArrayList<Member> myMembers = myExercisors; //Redundant but gives visibility to what's happening when reading files and adding them together.
@@ -41,7 +43,7 @@ public class DolphinDomain {
 
     public String getArreas(){
         StringBuilder str = new StringBuilder();
-        ArrayList<Member> myCompetitors = files.readCompetitorFile();
+        ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
         myExercisors.addAll(myCompetitors);
         ArrayList<Member> myMembers = myExercisors; //Redundant but gives visibility to what's happening when reading files and adding them together.
@@ -54,7 +56,18 @@ public class DolphinDomain {
         return str.toString();
         }
 
+
+    public String getTopFive(){
+        ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
+        System.out.println(myCompetitors);
+        Collections.sort(myCompetitors, new ComparatorBryst());
+        System.out.println(myCompetitors);
+        return "hey";
     }
+
+    }
+
+
 
 
 
