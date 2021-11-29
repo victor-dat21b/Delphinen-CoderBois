@@ -19,8 +19,8 @@ public class DolphinDomain {
         }
     }
 
-
-
+/*
+Victors dank code
     public void comparecompetitors(){
         ComparatorRygcrawl myCompare = new ComparatorRygcrawl();
         ArrayList<Competitor> myArraylist = files.readCompetitorFile();
@@ -40,4 +40,6 @@ public class DolphinDomain {
         new DolphinDomain().comparecompetitors();
     }
 
+
+ */
 }
