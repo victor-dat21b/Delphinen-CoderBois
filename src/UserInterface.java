@@ -26,7 +26,7 @@ public class UserInterface {
             if (this.in.hasNextInt()) {
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
-                    testOption1();
+                    option1();
 
                     //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2) {
@@ -63,7 +63,7 @@ public class UserInterface {
                 --------------------------------------------------""");
     }
 
-    public void testOption1(){
+    public void option1(){
         ArrayList<String> disciplinListe = new ArrayList();
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
@@ -92,7 +92,7 @@ public class UserInterface {
             stringBuilder.append(',');
             stringBuilder.append("false");
             finalString = stringBuilder.toString();
-            System.out.println(controller.createMember(finalString));
+            System.out.println(controller.createMemberC(finalString));
 
             new UserInterface().startProgram();
         }
@@ -109,7 +109,7 @@ public class UserInterface {
             System.out.println("Ønsker medlemmet at svømme Crawl?");
             String diciplinAnswer = in.nextLine();
             if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("Crawl");
+                stringBuilderDeci.append("crawl");
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("0.0");
                 stringBuilderDeci.append(',');
@@ -121,7 +121,7 @@ public class UserInterface {
             System.out.println("Ønsker medlemmet at svømme Ryg Crawl?");
             diciplinAnswer = in.nextLine();
             if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("Ryg Crawl");
+                stringBuilderDeci.append("rygcrawl");
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("0.0");
                 stringBuilderDeci.append(',');
@@ -133,7 +133,7 @@ public class UserInterface {
             System.out.println("Ønsker medlemmet at svømme Brystsvømning?");
             diciplinAnswer = in.nextLine();
             if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("Brystsvømning");
+                stringBuilderDeci.append("brystsvømning");
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("0.0");
                 stringBuilderDeci.append(',');
@@ -145,7 +145,7 @@ public class UserInterface {
             System.out.println("Ønsker medlemmet at svømme Butterfly?");
             diciplinAnswer = in.nextLine();
             if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("Butterfly");
+                stringBuilderDeci.append("butterfly");
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("0.0");
                 stringBuilderDeci.append(',');
@@ -153,25 +153,29 @@ public class UserInterface {
                 stringBuilder.append(',');
                 numberOfDiciplins = numberOfDiciplins +1;
             }
+
+
+            stringBuilder.append(String.valueOf(numberOfDiciplins));
+            stringBuilder.append(',');
+            stringBuilder.append("0");
+            stringBuilder.append(',');
+            stringBuilder.append(stringBuilderDeci);
         }
 
-        stringBuilder.append(String.valueOf(numberOfDiciplins));
-        stringBuilder.append(',');
-        stringBuilder.append("0");
-        stringBuilder.append(',');
-        stringBuilder.append(stringBuilderDeci);
+        stringBuilder.replace(stringBuilder.length()-1, stringBuilder.length(), " ");
 
+        finalString = stringBuilder.toString();
 
         if (answer.equalsIgnoreCase("ja")) {
-            System.out.println(controller.createMember(finalString));
+            System.out.println(controller.createMemberC(finalString));
         } else {
-            System.out.println(controller.createMember(finalString));
+            System.out.println(controller.createMemberE(finalString));
         }
 
     }
 
-
-    public void option1() {//Troels
+/*
+    public void oldOption1() {//Troels
 
         ArrayList<String> disciplinListe = new ArrayList();
 
@@ -235,5 +239,5 @@ public class UserInterface {
 
     }
 
-
+*/
 }

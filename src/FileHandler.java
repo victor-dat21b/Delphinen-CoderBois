@@ -55,6 +55,41 @@ public class FileHandler {
     }
 
 
+    public String writeExerciserFileTest(String data){
+
+        try{
+            FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt....");
+        }
+
+        return "Medlem oprettet!";
+    }
+
+    public String writeCompetitorFileTest(String data){
+
+        try{
+            FileWriter fileWriter = new FileWriter("competitors.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt....");
+        }
+
+        return "Medlem oprettet!";
+    }
+
+/*
     public String writeExerciserFile(Exerciser exerciser) {//Troels
 
         try {
@@ -85,25 +120,6 @@ public class FileHandler {
         }
 
         return "Medlem bliv oprettet!";
-    }
-
-
-    public String writeCompetitorFileTest(String data){
-
-        try{
-            FileWriter fileWriter = new FileWriter("competitors.csv", true);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write(data);
-            bufferedWriter.close();
-
-        }catch (Exception e){
-            System.out.println("Noget gik galt....");
-        }
-
-
-
-        return "Medlem oprettet!";
     }
 
     public String writeCompetitorFile(Competitor competitor) {
@@ -141,5 +157,5 @@ public class FileHandler {
         return "Medlem bliv oprettet!";
     }
 
-
+*/
 }

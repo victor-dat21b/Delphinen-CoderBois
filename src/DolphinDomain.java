@@ -4,11 +4,14 @@ public class DolphinDomain {
 
     FileHandler files = new FileHandler();
 
-    public String creatMember(String data){
+    public String creatMemberC(String data){
         return files.writeCompetitorFileTest(data);
     }
 
-
+    public String creatMemberE(String data){
+        return files.writeExerciserFileTest(data);
+    }
+    /*
     public String createMember(String name, int age, boolean active, boolean arrears, ArrayList<String> disciplineAndTime) {//Troels
         if (disciplineAndTime == null) {
             //Motionist
@@ -21,5 +24,5 @@ public class DolphinDomain {
 
         }
     }
-
+*/
 }
