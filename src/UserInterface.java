@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
@@ -39,8 +40,11 @@ public class UserInterface {
                 }else if (userInput == 5){
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
-                    System.out.println("Top 5 i tider");
-                    files.compareCrawl();
+                    System.out.println("Top 5 i Crawl");
+                    ArrayList<Competitor> yeet = files.readCompetitorFile();
+                    Collections.sort(yeet);
+                    System.out.println(yeet);
+
                 }
 
                 else if (userInput == 0) {
