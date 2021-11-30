@@ -5,10 +5,6 @@ public class DolphinController {
     DolphinDomain domain = new DolphinDomain();
 
 
-    public void getMemberList(){
-
-    }
-
     public String createMemberC(String data){
         return domain.creatMemberC(data);
     }
@@ -32,11 +28,26 @@ public class DolphinController {
         return domain.calculateIncome();
     }
 
-
-
-    public String getTopFive(){
-        return domain.getTopFive();
+    public String getJuniorTopFiveCrawl(){ // Lasse
+        return domain.getJuniorTopFiveCrawl();
     }
+
+    public String getJuniorTopFiveRygcrawl(){ // Lasse
+        return domain.getJuniorTopFiveRygcrawl();
+    }
+
+    public String getJuniorTopFiveButterfly(){ // Lasse
+        return domain.getJuniorTopFiveButterfly();
+    }
+
+    public String getJuniorTopFiveBrystsvømning(){ // Lasse
+        return domain.getJuniorTopFiveBrystsvømning();
+    }
+
+    public String getSeniorTopFiveCrawl(){ // Lasse
+        return domain.getSeniorTopFiveCrawl();
+    }
+
 
     public String getArreas(){
         return domain.getArreas();
@@ -47,5 +58,16 @@ public class DolphinController {
     }
 
 
+    public String getSeniorTopFiveRygcrawl(){ // Lasse
+        return domain.getSeniorTopFiveRygcrawl();
+    }
+
+    public String getSeniorTopFiveButterfly(){ // Lasse
+        return domain.getSeniorTopFiveButterfly();
+    }
+
+    public String getSeniorTopFiveBrystsvømning(){ // Lasse
+        return domain.getSeniorTopFiveBrystsvømning();
+    }
 
 }

@@ -6,25 +6,24 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    public ArrayList<Member> readExerciserFile(){
+    public ArrayList<Member> readExerciserFile() {
         ArrayList<Member> myMembers = new ArrayList<>();
         try {
             File myFile = new File("Exerciser.csv");
             Scanner myReader = new Scanner(myFile);
-            while (myReader.hasNextLine()){
+            while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split(",");
                 Member myMember = new Exerciser(data[0], Integer.parseInt(data[1]), Boolean.parseBoolean(data[2]), Boolean.parseBoolean(data[3]));
                 myMembers.add(myMember);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
             myMembers = null;
         }
         return myMembers;
     }
 
-    public ArrayList<Competitor> readCompetitorFile(){
+    public ArrayList<Competitor> readCompetitorFile() {
         /*
         OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
         bliver derfor ikke gemt. Vi gemmer kun ét stævne.
@@ -47,17 +46,16 @@ public class FileHandler {
                     counterDate = counterDate + 3;
                 }
                 if (myCompetitor.getTournamentCheck()) {
-                int startPlace = counterDate + 1;
-                for (int j = startPlace; j != data.length; j++) {
-                    myCompetitor.setTournamentInformation(data[j]); //add information
-                }
+                    int startPlace = counterDate + 1;
+                    for (int j = startPlace; j != data.length; j++) {
+                        myCompetitor.setTournamentInformation(data[j]); //add information
+                    }
                 } else {
 
                 }
                 myMembers.add(myCompetitor);
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error");
             myMembers = null;
         }
@@ -65,9 +63,9 @@ public class FileHandler {
     }
 
 
-    public String writeExerciserFileTest(String data){
+    public String writeExerciserFileTest(String data) {
 
-        try{
+        try {
             FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -75,16 +73,16 @@ public class FileHandler {
             bufferedWriter.write(data);
             bufferedWriter.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
 
         return "Medlem oprettet!";
     }
 
-    public String writeCompetitorFileTest(String data){
+    public String writeCompetitorFileTest(String data) {
 
-        try{
+        try {
             FileWriter fileWriter = new FileWriter("competitors.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
@@ -92,7 +90,7 @@ public class FileHandler {
             bufferedWriter.write(data);
             bufferedWriter.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
 

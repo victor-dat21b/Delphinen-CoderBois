@@ -6,7 +6,7 @@ public class Competitor extends Member {
     ArrayList<String> tournamentInformation = new ArrayList<>();
     private double crawlTime = 0.0;
     private double rygCrawlTime = 0.0;
-    private double brystsvømningTime= 0.0;
+    private double brystsvømningTime = 0.0;
     private double butterflyTime = 0.0;
 
     private String crawlDate;
@@ -24,16 +24,16 @@ public class Competitor extends Member {
 
     public void setDisciplineTime(String discipline, Double time, String dato) {
         //switch der genkender disciplin type ud fra string og sætter tiden ud fra time
-        if (discipline.equals("crawl")) {
+        if (discipline.equalsIgnoreCase("crawl")) {
             this.crawlTime = time;
             this.crawlDate = dato;
-        } else if (discipline.equals("rygcrawl")) {
+        } else if (discipline.equalsIgnoreCase("rygcrawl")) {
             this.rygCrawlTime = time;
             this.rygCrawlDate = dato;
-        } else if (discipline.equals("brystsvømning")) {
+        } else if (discipline.equalsIgnoreCase("brystsvømning")) {
             this.brystsvømningTime = time;
             this.brystsvømningDate = dato;
-        } else if (discipline.equals("butterfly")) {
+        } else if (discipline.equalsIgnoreCase("butterfly")) {
             this.butterflyTime = time;
             this.butterflyDate = dato;
         } else {
@@ -55,22 +55,21 @@ public class Competitor extends Member {
     }
 
 
-
-    public double getCrawlTime(){
+    public double getCrawlTime() {
         return this.crawlTime;
     }
-    public double getRygCrawlTime(){
+
+    public double getRygCrawlTime() {
         return this.rygCrawlTime;
     }
-    public double getBrystsvømningTime(){
+
+    public double getBrystsvømningTime() {
         return this.brystsvømningTime;
     }
-    public double getButterflyTime(){
+
+    public double getButterflyTime() {
         return this.butterflyTime;
     }
-
-
-
 
 
     @Override
