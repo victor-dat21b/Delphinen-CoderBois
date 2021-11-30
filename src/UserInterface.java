@@ -282,11 +282,21 @@ public class UserInterface {
                     System.out.println("Hvilken disciplin ønsker du at indtaste tid og dato for?");
                     System.out.println("1: crawl, 2: rygcrawl, 3: brystsvømning, 4: butterfly.");
                     if (in.hasNextInt()) {
-                        int disciplineInt= this.in.nextInt();
-
+                        int disciplineInt = this.in.nextInt();
                         if (disciplineInt < 1 || disciplineInt > 4){
                             System.out.println("Error wrong int");
                         } else{
+                            in.nextLine();
+                            System.out.println("Indtast tid i format 0.0 eller 0.00");
+                            String stringTime = in.nextLine();
+                            System.out.println("Indtast dato i format 00-00-0000");
+                            String stringDato = in.nextLine();
+                            controller.setCompetitiveTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
+
+
+
+
+
 
 
                         }

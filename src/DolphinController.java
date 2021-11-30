@@ -21,7 +21,8 @@ public class DolphinController {
 
     }
 
-    public void setCompetitiveTime(){
+    public void setCompetitiveTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
+        domain.setCompetitorTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
     }
 
     public int calculateIncome(){

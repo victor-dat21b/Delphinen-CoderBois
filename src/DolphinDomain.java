@@ -53,6 +53,42 @@ public class DolphinDomain {
         return str.toString();
     }
 
+    public ArrayList<String> searchForCompetitor(String stringUserInput) { //Victor
+        ArrayList<Competitor> myArray = files.readCompetitorFile();
+        for (Competitor competitor : myArray) {
+            if (competitor.getName().toLowerCase(Locale.ROOT).contains(stringUserInput)) {
+
+                this.mySorted.add(competitor);
+            } else {
+            }
+        }
+        ArrayList<String> myStringList = new ArrayList<>();
+        int myCounter = 1;
+        for (Competitor competitor : mySorted) {
+            myStringList.add(myCounter + " : " + competitor.toString());
+            myCounter++;
+        }
+        return myStringList;
+    }
+
+
+    public void setCompetitorTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
+        chooseCompetitorInt = chooseCompetitorInt -1;
+        Competitor myCompetitor = this.mySorted.get(chooseCompetitorInt);
+        String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
+        String myDiscipline = dicipline[(disciplineInt-1)];
+        files.editCompetitorFile(myCompetitor, myDiscipline, stringTime, stringDato);
+
+    }
+
+
+
+
+
+
+
+
+
 
     public ArrayList<Competitor> sortCompetitorBySenior() { // Lasse
         ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();
@@ -160,23 +196,6 @@ public class DolphinDomain {
         return topFive.toString();
     }
 
-    public ArrayList<String> searchForCompetitor(String stringUserInput) { //Victor
-        ArrayList<Competitor> myArray = files.readCompetitorFile();
-        for (Competitor competitor : myArray) {
-            if (competitor.getName().toLowerCase(Locale.ROOT).contains(stringUserInput)) {
-
-                this.mySorted.add(competitor);
-            } else {
-            }
-        }
-        ArrayList<String> myStringList = new ArrayList<>();
-        int myCounter = 1;
-        for (Competitor competitor : mySorted) {
-            myStringList.add(myCounter + " : " + competitor.toString());
-            myCounter++;
-        }
-        return myStringList;
-    }
 
     public String getSeniorTopFiveButterfly() { // Lasse
         ArrayList<Competitor> SeniorSwimmer = sortCompetitorBySenior();

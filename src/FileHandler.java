@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -97,4 +98,67 @@ public class FileHandler {
         return "Medlem oprettet!";
     }
 
-}
+
+
+    public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){
+        StringBuilder myBuilder = new StringBuilder();
+            try {
+                File myFile = new File("competitors.csv");
+                Scanner myReader = new Scanner(myFile);
+                while (myReader.hasNextLine()) {
+                    String[] data = myReader.nextLine().split(",");
+                    if (data[0].equals(myCompetitor.getName()) && Integer.parseInt(data[1]) == myCompetitor.getAge()) {
+                        int amountOfDisciplines = myCompetitor.getAmountTrainingDiscipline();
+                        int myCounter = 6;
+                        boolean changedFlag = false;
+                        for (int i = 0; i != amountOfDisciplines; i++) {
+                            if (data[myCounter].equals(myDiscipline)) {
+                                data[(myCounter+1)] = stringTime;
+                                data[(myCounter+2)] = stringDato;
+                                myCounter = myCounter +3;
+                                changedFlag = true;
+                            }else {
+                                myCounter = myCounter + 3;
+                            }
+                            if (!changedFlag) {
+                                myBuilder.append(Arrays.toString(data));
+                                myBuilder.append(",");
+                                myBuilder.append(myDiscipline).append(",").append(stringTime).append(",").append(stringDato);
+                                myBuilder.append("\n");
+                            }else {
+                                myBuilder.append(Arrays.toString(data));
+                                myBuilder.append("\n");
+                            }
+
+                        }
+                    }else {
+                        myBuilder.append(Arrays.toString(data));
+                        myBuilder.append("\n");
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Error");
+            }
+
+        System.out.println(myBuilder);
+        try {
+            FileWriter fileWriter = new FileWriter("competitors.csv", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write(String.valueOf(myBuilder));
+
+
+        } catch (Exception e) {
+            System.out.println("Noget gik galt....");
+        }
+
+
+        }
+
+
+
+
+    }
+
+
+
