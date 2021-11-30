@@ -1,2 +1,4 @@
-Bente,18,false,false,2,1,crawl,8.56,12-05-2020,butterfly,9.78,06-07-2018
-Børge,19,true,false,3,2,crawl,10.23,12-05-2021,rygcrawl,20.14,12-06-2017,brystsvømning,12.55,26-11-2021
+Bente,18,false,false,2,false,crawl,8.56,12-05-2020,butterfly,9.78,06-07-2018
+Børge,19,true,false,3,false,crawl,0.0,12-05-2021,rygcrawl,20.14,12-06-2017,brystsvømning,12.55,26-11-2021
+Joe,19,false,true,1,false,crawl,14.6,12-05-2020
+Henriette,35,true,false,2,false,crawl,10.23,12-05-2021,brystsvømning,6.89,26-11-2021

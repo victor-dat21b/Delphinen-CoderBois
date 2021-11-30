@@ -44,8 +44,15 @@ public abstract class Member {
         return arrears;
     }
 
+    public boolean getActive(boolean active) {
+        return this.active;
+    }
+
+
+
+
     @Override
     public String toString() {
-        return "Navn: " + name + ". Alder: " + age + ". Activ: " + active + ". Restancer: " + arrears + "\n\n";
+        return "Navn: " + name + ". Alder: " + age + ". Aktiv: " + active + ". Restance: " + arrears + "\n";
     }
 }

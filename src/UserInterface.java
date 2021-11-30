@@ -19,6 +19,7 @@ public class UserInterface {
                     4: Turnerings svømmetider.
                     5: Trænings svømmetider.
                     6: Top 5 tider.
+                    7: Medlemmer i restance
                     0: Luk program.""");
             System.out.print("Valg: ");
             if (this.in.hasNextInt()){
@@ -28,9 +29,9 @@ public class UserInterface {
 
                     //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
-                    System.out.println("Se økonomi");
+                    System.out.println("The expected income is = " + controller.calculateIncome());
                 }else if (userInput == 3){
-                    System.out.println("Motionister");
+                    System.out.println(new Filehandler().readExerciserFile());
                     System.out.println(new Filehandler().readCompetitorFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
@@ -38,7 +39,10 @@ public class UserInterface {
                 }else if (userInput == 5){
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
-                    System.out.println("Top 5 i tider");
+                    System.out.println(controller.getTopFive());
+                }else if (userInput == 7){
+                    System.out.println("Medlemmer i restance:");
+                    System.out.println(controller.getArreas());
                 }
 
                 else if (userInput == 0) {
