@@ -13,6 +13,14 @@ public class DolphinController {
         return domain.creatMemberE(data);
     }
 
+    public String createTournamentInfo(String data){
+        return domain.writeTournamentInfo(data);
+    }
+
+    public ArrayList<String> readTournamentInfo(){
+        return domain.readTournamentInfo();
+    }
+
     public Member pickSwimmerFromList(){
         return null;
     }
