@@ -27,6 +27,7 @@ public class UserInterface {
 
                     option1();
 
+                    //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
 
                     System.out.println("The expected income is = " + controller.calculateIncome());
@@ -90,6 +91,7 @@ public class UserInterface {
         System.out.println("Navn:");
 
         stringBuilder.append(in.nextLine()).append(',');
+
 
 
         System.out.println("Alder:");
