@@ -100,7 +100,7 @@ public class UserInterface {
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
                 }else if (userInput == 8){
-
+                    updateCompetitorTime();
 
                 }
 
@@ -264,19 +264,45 @@ public class UserInterface {
     }
 
 
-    public void updateCompetitorTime(){
+    public void updateCompetitorTime() {
         in.nextLine();
         System.out.println("Indtast navnet på det medlem du ønsker at opdatere tiden for:");
         String stringUserInput = in.nextLine();
         ArrayList<String> myList = controller.searchForCompetitor(stringUserInput);
-        for (String myString:myList){
-            System.out.println(myString);
+        if (!myList.isEmpty()) {
+            for (String myString : myList) {
+                System.out.println(myString);
+            }
+            System.out.println("Indtast tallet for den svømmer du ønsker at vælge:");
+            if (in.hasNextInt()) {
+                int chooseCompetitorInt = this.in.nextInt();
+                if (chooseCompetitorInt < 1 || chooseCompetitorInt > myList.size()){
+                    System.out.println("Error wrong int");
+                } else{
+                    System.out.println("Hvilken disciplin ønsker du at indtaste tid og dato for?");
+                    System.out.println("1: crawl, 2: rygcrawl, 3: brystsvømning, 4: butterfly.");
+                    if (in.hasNextInt()) {
+                        int disciplineInt= this.in.nextInt();
+
+                        if (disciplineInt < 1 || disciplineInt > 4){
+                            System.out.println("Error wrong int");
+                        } else{
+
+
+                        }
+                    } else if (in.hasNextLine()) {
+                        System.out.println("Wrong input, please try again");
+                    }
+                }
+            } else if (in.hasNextLine()) {
+                System.out.println("Wrong input, please try again");
+            }
+        } else{
+            System.out.println("Ingen konkurrencesvømmetr fundet, prøv igen");
         }
-        if (in.hasNextInt()){
-            int userInt = this.in.nextInt();
-        } else if (in.hasNextLine()){
-            System.out.println("Wrong input, please try again");
-        }
+
+
+        controller.domain.mySorted.clear();
     }
 
 }

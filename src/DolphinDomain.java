@@ -16,7 +16,7 @@ public class DolphinDomain {
     }
 
 
-    public int calculateIncome() {
+    public int calculateIncome() { //Victor
         int incomeCounter = 0;
         ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
@@ -38,7 +38,7 @@ public class DolphinDomain {
         return incomeCounter;
     }
 
-    public String getArreas() {
+    public String getArreas() { //Victor
         StringBuilder str = new StringBuilder();
         ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
@@ -160,7 +160,7 @@ public class DolphinDomain {
         return topFive.toString();
     }
 
-    public ArrayList<String> searchForCompetitor(String stringUserInput) {
+    public ArrayList<String> searchForCompetitor(String stringUserInput) { //Victor
         ArrayList<Competitor> myArray = files.readCompetitorFile();
         for (Competitor competitor : myArray) {
             if (competitor.getName().toLowerCase(Locale.ROOT).contains(stringUserInput)) {
@@ -170,7 +170,7 @@ public class DolphinDomain {
             }
         }
         ArrayList<String> myStringList = new ArrayList<>();
-        int myCounter = 0;
+        int myCounter = 1;
         for (Competitor competitor : mySorted) {
             myStringList.add(myCounter + " : " + competitor.toString());
             myCounter++;
