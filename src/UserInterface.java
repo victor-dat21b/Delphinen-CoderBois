@@ -207,8 +207,7 @@ public class UserInterface {
 
 
         if (answer == 1) {
-            //ArrayList<String> myList = new ArrayList<>();
-            // myList.add("crawl"); myList.add("butterfly"); myList.add("brystsvømning");myList.add("rygcrawl");
+
             isValid = false;
             int diciplinAnswer = 0;
             List<String> myList = Arrays.asList("crawl", "butterfly", "brystsvømning", "rygcrawl");
@@ -247,7 +246,7 @@ public class UserInterface {
 
             stringBuilder.append(String.valueOf(numberOfDiciplins));
             stringBuilder.append(',');
-            stringBuilder.append("0");
+            stringBuilder.append("false");
             stringBuilder.append(',');
             stringBuilder.append(stringBuilderDeci);
         }
