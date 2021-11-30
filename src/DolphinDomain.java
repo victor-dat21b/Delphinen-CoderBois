@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Locale;
 
@@ -8,13 +7,20 @@ public class DolphinDomain {
     FileHandler files = new FileHandler();
 
     public String creatMemberC(String data) {
-        return files.writeCompetitorFileTest(data);
+        return files.writeCompetitorFile(data);
     }
 
     public String creatMemberE(String data) {
-        return files.writeExerciserFileTest(data);
+        return files.writeExerciserFile(data);
     }
 
+    public String writeTournamentInfo(String data){
+        return files.writeTournamentInfo(data);
+    }
+
+    public ArrayList<String> readTournamentInfo(){
+        return files.readTournamentInfo();
+    }
 
     public int calculateIncome() {
         int incomeCounter = 0;
@@ -52,7 +58,6 @@ public class DolphinDomain {
         }
         return str.toString();
     }
-
 
     public ArrayList<Competitor> sortCompetitorBySenior() { // Lasse
         ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();

@@ -2,6 +2,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FileHandler {
@@ -61,9 +62,28 @@ public class FileHandler {
         }
         return myMembers;
     }
+    
+    public ArrayList<String> readTournamentInfo(){
+        String[] data = new String[0];
+        ArrayList<String> tournamentInfo = new ArrayList<>();
+        try{
+            File myFile = new File("TournamentInfo.csv");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()){
+                data = myReader.nextLine().split(",");
+                tournamentInfo.add(Arrays.toString(data));
+            }
+
+            
+        }catch (Exception e){
+            System.out.println("Noget gik galt");
+        }
+        
+        return tournamentInfo;
+    }
 
 
-    public String writeExerciserFileTest(String data) {
+    public String writeExerciserFile(String data) {
 
         try {
             FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
@@ -80,7 +100,7 @@ public class FileHandler {
         return "Medlem oprettet!";
     }
 
-    public String writeCompetitorFileTest(String data) {
+    public String writeCompetitorFile(String data) {
 
         try {
             FileWriter fileWriter = new FileWriter("competitors.csv", true);
@@ -95,6 +115,23 @@ public class FileHandler {
         }
 
         return "Medlem oprettet!";
+    }
+
+    public String writeTournamentInfo(String data){
+
+        try {
+            FileWriter fileWriter = new FileWriter("TournamentInfo.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+
+        } catch (Exception e) {
+            System.out.println("Noget gik galt....");
+        }
+
+        return "Fil opdateret!";
     }
 
 }
