@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Locale;
 
 public class DolphinDomain {
-
+    ArrayList<Competitor> mySorted = new ArrayList<>();
     FileHandler files = new FileHandler();
 
     public String creatMemberC(String data){//Troels
@@ -60,6 +61,23 @@ public class DolphinDomain {
         Collections.sort(myCompetitors, new ComparatorBryst());
         System.out.println(myCompetitors);
         return "hey";
+    }
+
+    public ArrayList<String> searchForCompetitor(String stringUserInput){
+        ArrayList<Competitor>  myArray = files.readCompetitorFile();
+        for (Competitor competitor:myArray) {
+            if (competitor.getName().toLowerCase(Locale.ROOT).contains(stringUserInput)) {
+                this.mySorted.add(competitor);
+            } else {
+            }
+        }
+        ArrayList<String> myStringList = new ArrayList<>();
+        int myCounter = 0;
+        for (Competitor competitor:mySorted){
+            myStringList.add(myCounter + " : " + competitor.toString());
+            myCounter++;
+        }
+        return myStringList;
     }
 
 }

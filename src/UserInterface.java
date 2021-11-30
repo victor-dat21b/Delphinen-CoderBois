@@ -1,6 +1,4 @@
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserInterface {
     Scanner in = new Scanner(System.in);
@@ -19,10 +17,11 @@ public class UserInterface {
                     1: Nyt medlem.
                     2: Se økonomi.
                     3: Liste over medlemmer.
-                    4: Turnerings svømmetider.
-                    5: Trænings svømmetider.
-                    6: Top 5 tider.
-                    7: Medlemmer i restance
+                    4: Turnerings information og svømmetider for konkurrencesvømmere.
+                    5: Træningsresultater for konkurrencesvømmere.
+                    6: Top 5 tider for konkurrencesvømmere.
+                    7: Medlemmer i restance.
+                    8. Opdater tid for konkurrencesvømmer.
                     0: Luk program.""");
             System.out.print("Valg: ");
             if (this.in.hasNextInt()) {
@@ -32,30 +31,35 @@ public class UserInterface {
                     option1();
 
                     //Sendes over i en anden klasse med metode som opretter medlem
-                } else if (userInput == 2) {
+                } else if (userInput == 2){
 
                     System.out.println("The expected income is = " + controller.calculateIncome());
 
-                } else if (userInput == 3) {
+                }else if (userInput == 3){
 
                     System.out.println(new FileHandler().readExerciserFile());
                     System.out.println(new FileHandler().readCompetitorFile());
 
-                } else if (userInput == 4) {
+                }else if (userInput == 4){
 
                     System.out.println("Konkurrencetider");
 
                 } else if (userInput == 5) {
 
                     System.out.println("Træningstider");
-                } else if (userInput == 6) {
+                }else if (userInput == 6){
 
                     System.out.println(controller.getTopFive());
-                } else if (userInput == 7) {
+                }else if (userInput == 7){
 
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
-                } else if (userInput == 0) {
+                }else if (userInput == 8){
+
+
+                }
+
+                else if (userInput == 0) {
 
                     gameFlag = false;
 
@@ -191,8 +195,8 @@ public class UserInterface {
                     numberOfDiciplins = numberOfDiciplins + 1;
                 } else {
 
-                }
-                myCounter++;
+            }
+            myCounter++;
             }
 
             stringBuilder.append(String.valueOf(numberOfDiciplins));
@@ -202,7 +206,7 @@ public class UserInterface {
             stringBuilder.append(stringBuilderDeci);
         }
 
-        stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), " ");
+        stringBuilder.replace(stringBuilder.length()-1, stringBuilder.length(), " ");
 
         finalString = stringBuilder.toString();
 
@@ -212,6 +216,22 @@ public class UserInterface {
             System.out.println(controller.createMemberE(finalString));
         }
 
+    }
+
+
+    public void updateCompetitorTime(){
+        in.nextLine();
+        System.out.println("Indtast navnet på det medlem du ønsker at opdatere tiden for:");
+        String stringUserInput = in.nextLine();
+        ArrayList<String> myList = controller.searchForCompetitor(stringUserInput);
+        for (String myString:myList){
+            System.out.println(myString);
+        }
+        if (in.hasNextInt()){
+            int userInt = this.in.nextInt();
+        } else if (in.hasNextLine()){
+            System.out.println("Wrong input, please try again");
+        }
     }
 
 }

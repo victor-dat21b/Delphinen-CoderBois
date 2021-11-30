@@ -42,6 +42,10 @@ public class DolphinController {
         return domain.getArreas();
     }
 
+    public ArrayList<String> searchForCompetitor(String stringUserInput){
+        return domain.searchForCompetitor(stringUserInput);
+    }
+
 
 
 }
