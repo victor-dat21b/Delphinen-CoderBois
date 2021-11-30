@@ -156,7 +156,6 @@ public class UserInterface {
 
 
             stringBuilder.append(String.valueOf(numberOfDiciplins));
-            stringBuilder.append(',');
             stringBuilder.append("0");
             stringBuilder.append(',');
             stringBuilder.append(stringBuilderDeci);
