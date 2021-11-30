@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
@@ -31,8 +32,8 @@ public class UserInterface {
                 } else if (userInput == 2){
                     System.out.println("The expected income is = " + controller.calculateIncome());
                 }else if (userInput == 3){
-                    System.out.println(new Filehandler().readExerciserFile());
-                    System.out.println(new Filehandler().readCompetitorFile());
+                    System.out.println(new FileHandler().readExerciserFile());
+                    System.out.println(new FileHandler().readCompetitorFile());
                 }else if (userInput == 4){
                     System.out.println("Konkurrencetider");
 
