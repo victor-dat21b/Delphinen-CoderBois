@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
@@ -25,33 +24,45 @@ public class UserInterface {
             if (this.in.hasNextInt()) {
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
+
                     option1();
 
-                    //Sendes over i en anden klasse med metode som opretter medlem
                 } else if (userInput == 2){
+
                     System.out.println("The expected income is = " + controller.calculateIncome());
+
                 }else if (userInput == 3){
-                    System.out.println(new Filehandler().readExerciserFile());
-                    System.out.println(new Filehandler().readCompetitorFile());
+
+                    System.out.println(new FileHandler().readExerciserFile());
+                    System.out.println(new FileHandler().readCompetitorFile());
+
                 }else if (userInput == 4){
+
                     System.out.println("Konkurrencetider");
 
                 } else if (userInput == 5) {
+
                     System.out.println("Træningstider");
                 }else if (userInput == 6){
+
                     System.out.println(controller.getTopFive());
                 }else if (userInput == 7){
+
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
                 }
 
                 else if (userInput == 0) {
+
                     gameFlag = false;
+
                     System.out.println("Du har lukket programmet!");
                 } else {
+
                     System.out.println("Forkert input, prøv igen!");
                 }
             } else if (in.hasNextLine()) {
+
                 System.out.println("Fejl, prøv igen!");
                 in.next();
             }
@@ -67,8 +78,8 @@ public class UserInterface {
                 --------------------------------------------------""");
     }
 
-    public void option1(){
-        ArrayList<String> disciplinListe = new ArrayList();
+    public void option1(){//Troels
+
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
         String finalString = "";
@@ -79,7 +90,6 @@ public class UserInterface {
         System.out.println("Navn:");
 
         stringBuilder.append(in.nextLine()).append(',');
-
 
 
         System.out.println("Alder:");
@@ -96,7 +106,7 @@ public class UserInterface {
             stringBuilder.append(',');
             stringBuilder.append("false");
             finalString = stringBuilder.toString();
-            System.out.println(controller.createMemberC(finalString));
+            System.out.println(controller.createMemberE(finalString));
 
             new UserInterface().startProgram();
         }

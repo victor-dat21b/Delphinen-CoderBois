@@ -1,7 +1,6 @@
-import java.util.ArrayList;
-
 public class DolphinController {
 
+    DolphinDomain domain = new DolphinDomain();
 
 
     public void getMemberList(){

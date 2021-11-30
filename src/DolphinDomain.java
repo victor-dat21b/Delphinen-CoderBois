@@ -6,17 +6,17 @@ public class DolphinDomain {
 
     FileHandler files = new FileHandler();
 
-    public String creatMemberC(String data){
+    public String creatMemberC(String data){//Troels
         return files.writeCompetitorFileTest(data);
     }
 
-    public String creatMemberE(String data){
+    public String creatMemberE(String data){//Troels
         return files.writeExerciserFileTest(data);
     }
 
 
 
-    public int calculateIncome(){
+    public int calculateIncome(){//Victor
         int incomeCounter = 0;
         ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
@@ -38,7 +38,7 @@ public class DolphinDomain {
         return incomeCounter;
     }
 
-    public String getArreas(){
+    public String getArreas(){//Victor
         StringBuilder str = new StringBuilder();
         ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         ArrayList<Member> myExercisors = files.readExerciserFile();
@@ -54,7 +54,7 @@ public class DolphinDomain {
         }
 
 
-    public String getTopFive(){
+    public String getTopFive(){//Victor & Lasse
         ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
         System.out.println(myCompetitors);
         Collections.sort(myCompetitors, new ComparatorBryst());
@@ -62,7 +62,7 @@ public class DolphinDomain {
         return "hey";
     }
 
-    }
+}
 
 
 
