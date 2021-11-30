@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class UserInterface {
     Scanner in = new Scanner(System.in);
@@ -121,55 +122,25 @@ public class UserInterface {
         answer = in.nextLine();
 
         if (answer.equalsIgnoreCase("ja")) {
-
-            System.out.println("Ønsker medlemmet at svømme Crawl?");
+            ArrayList<String> myList = new ArrayList<>();
+            myList.add("crawl"); myList.add("butterfly"); myList.add("brystsvømning");myList.add("rygcrawl");
+            int myCounter = 0;
+            while(myCounter != 4){
+            System.out.println("Ønsker medlemmet at svømme " + myList.get(myCounter));
             String diciplinAnswer = in.nextLine();
             if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("crawl");
+                stringBuilderDeci.append(myList.get(myCounter));
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("0.0");
                 stringBuilderDeci.append(',');
                 stringBuilderDeci.append("00-00-0000");
                 stringBuilderDeci.append(',');
                 numberOfDiciplins = numberOfDiciplins +1;
-            }
+            } else {
 
-            System.out.println("Ønsker medlemmet at svømme Ryg Crawl?");
-            diciplinAnswer = in.nextLine();
-            if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("rygcrawl");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("0.0");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("00-00-0000");
-                stringBuilder.append(',');
-                numberOfDiciplins = numberOfDiciplins +1;
             }
-
-            System.out.println("Ønsker medlemmet at svømme Brystsvømning?");
-            diciplinAnswer = in.nextLine();
-            if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("brystsvømning");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("0.0");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("00-00-0000");
-                stringBuilder.append(',');
-                numberOfDiciplins = numberOfDiciplins +1;
+            myCounter++;
             }
-
-            System.out.println("Ønsker medlemmet at svømme Butterfly?");
-            diciplinAnswer = in.nextLine();
-            if(diciplinAnswer.equalsIgnoreCase("ja")){
-                stringBuilderDeci.append("butterfly");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("0.0");
-                stringBuilderDeci.append(',');
-                stringBuilderDeci.append("00-00-0000");
-                stringBuilder.append(',');
-                numberOfDiciplins = numberOfDiciplins +1;
-            }
-
 
             stringBuilder.append(String.valueOf(numberOfDiciplins));
             stringBuilder.append(',');
