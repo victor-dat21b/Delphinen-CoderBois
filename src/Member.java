@@ -1,11 +1,11 @@
-public abstract class Member {
+public abstract class Member { //Lasse
 
     private String name;
     private int age;
     private boolean active;
     private boolean arrears;
 
-    public Member(String name, int age, boolean active, boolean arrears){
+    public Member(String name, int age, boolean active, boolean arrears) {
         this.name = name;
         this.age = age;
         this.active = active;
@@ -28,7 +28,7 @@ public abstract class Member {
         this.arrears = arrears;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -40,15 +40,13 @@ public abstract class Member {
         return active;
     }
 
-    public boolean getArrears () {
+    public boolean getArrears() {
         return arrears;
     }
 
     public boolean getActive(boolean active) {
         return this.active;
     }
-
-
 
 
     @Override

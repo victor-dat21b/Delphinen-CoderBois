@@ -14,7 +14,7 @@ public class UserInterface {
         boolean gameFlag = true;
         while (gameFlag) {
             System.out.println("""
-                    1: Nyt medlem.
+                    1: Opret medlem.
                     2: Se økonomi.
                     3: Liste over medlemmer.
                     4: Turnerings information og svømmetider for konkurrencesvømmere.
@@ -47,11 +47,56 @@ public class UserInterface {
                 } else if (userInput == 5) {
 
                     System.out.println("Træningstider");
-                }else if (userInput == 6){
+                } else if (userInput == 6) { // Lasse
+                    System.out.println("""
+                            Vælg hvilken aldersgruppe du vil se Top 5 for?
+                            1: Junior Svømmere.
+                            2: Senior svømmere.""");
+                    int choice = in.nextInt();
+                    if (choice == 1) {
+                        System.out.println("""
+                                Hvilken disciplin ønkser du at se for Junior Svømmere?
+                                1: Crawl.
+                                2: Rygcrawl.
+                                3. Butterfly.
+                                4. Brystsvømning.""");
+                        int choiceTwo = in.nextInt();
+                        if (choiceTwo == 1) {
+                            System.out.println(controller.getJuniorTopFiveCrawl());
+                        } else if (choiceTwo == 2) {
+                            System.out.println(controller.getJuniorTopFiveRygcrawl());
+                        } else if (choiceTwo == 3) {
+                            System.out.println(controller.getJuniorTopFiveButterfly());
+                        } else if (choiceTwo == 4) {
+                            System.out.println(controller.getJuniorTopFiveBrystsvømning());
+                        } else {
+                            System.out.println("Forkert input, returnere til menuen.");
+                        }
+                    } else if (choice == 2) {
+                        System.out.println("""
+                                Hvilken disciplin ønkser du at se for Senior Svømmere?
+                                1: Crawl.
+                                2: Rygcrawl.
+                                3. Butterfly.
+                                4. Brystsvømning.""");
+                        int choiceTwo = in.nextInt();
+                        if (choiceTwo == 1) {
+                            System.out.println(controller.getSeniorTopFiveCrawl());
+                        } else if (choiceTwo == 2) {
+                            System.out.println(controller.getSeniorTopFiveRygcrawl());
+                        } else if (choiceTwo == 3) {
+                            System.out.println(controller.getSeniorTopFiveButterfly());
+                        } else if (choiceTwo == 4) {
+                            System.out.println(controller.getSeniorTopFiveBrystsvømning());
+                        } else {
+                            System.out.println("Forkert input, returnere til menuen.");
+                        }
+                    } else {
+                        System.out.println("Forkert input, returnere til menu.");
+                    }
 
-                    System.out.println(controller.getTopFive());
-                }else if (userInput == 7){
 
+                } else if (userInput == 7) {
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
                 }else if (userInput == 8){
@@ -91,7 +136,6 @@ public class UserInterface {
         StringBuilder stringBuilderDeci = new StringBuilder();
         String finalString = "";
         int numberOfDiciplins = 0;
-        boolean isCompetitor = false;
 
         System.out.println("Opret nyt medlem");
         in.nextLine();
@@ -100,11 +144,13 @@ public class UserInterface {
         stringBuilder.append(in.nextLine()).append(',');
 
 
+
         System.out.println("Alder:");
         stringBuilder.append(in.nextLine());
         stringBuilder.append(',');
         boolean isActive = false;
         boolean isValid = false;
+        boolean isCompetitor = false;
         int answer = 0;
 
         do {
@@ -206,7 +252,7 @@ public class UserInterface {
             stringBuilder.append(stringBuilderDeci);
         }
 
-        stringBuilder.replace(stringBuilder.length()-1, stringBuilder.length(), " ");
+        stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), " ");
 
         finalString = stringBuilder.toString();
 
