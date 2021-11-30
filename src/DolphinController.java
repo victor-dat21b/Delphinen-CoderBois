@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class DolphinController {
-    private DolphinDomain domain = new DolphinDomain();
 
 
 
@@ -9,8 +8,12 @@ public class DolphinController {
 
     }
 
-    public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
-        domain.createMember(name, age, active, arrears, disciplineAndTime);
+    public String createMemberC(String data){
+        return domain.creatMemberC(data);
+    }
+
+    public String createMemberE(String data){
+        return domain.creatMemberE(data);
     }
 
     public Member pickSwimmerFromList(){

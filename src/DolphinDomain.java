@@ -1,20 +1,17 @@
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
 public class DolphinDomain {
 
-    Filehandler files = new Filehandler();
+    FileHandler files = new FileHandler();
 
-    public void createMember(String name, int age, boolean active, boolean arrears, ArrayList<double[]> disciplineAndTime){
-        if(disciplineAndTime == null){
-            //Motionist
-            System.out.println("Mos");
-        }else{
-            System.out.println("Comp");
-            //Competitor
-        }
+    public String creatMemberC(String data){
+        return files.writeCompetitorFileTest(data);
+    }
+
+    public String creatMemberE(String data){
+        return files.writeExerciserFileTest(data);
     }
 
 

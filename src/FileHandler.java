@@ -1,9 +1,10 @@
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Filehandler {
-
+public class FileHandler {
 
     public ArrayList<Member> readExerciserFile(){
         ArrayList<Member> myMembers = new ArrayList<>();
@@ -64,15 +65,38 @@ public class Filehandler {
     }
 
 
-    public void writeExerciserFile(){
+    public String writeExerciserFileTest(String data){
 
+        try{
+            FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt....");
+        }
+
+        return "Medlem oprettet!";
     }
 
-    public void writeCompetitorFile(){
+    public String writeCompetitorFileTest(String data){
 
+        try{
+            FileWriter fileWriter = new FileWriter("competitors.csv", true);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.newLine();
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt....");
+        }
+
+        return "Medlem oprettet!";
     }
-
-
-
 
 }
