@@ -75,6 +75,7 @@ public class Competitor extends Member {
     @Override
     public String toString() {
         return "Navn = " + super.getName() +
+                ". Alder = " + super.getAge() +
                 ". Aktive Discipliner = " + amountTrainingDiscipline +
                 ". Antal Turneringer = " + booleanTournmanetCheck +
                 ". Crawl = " + this.crawlTime +

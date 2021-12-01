@@ -91,15 +91,6 @@ public class DolphinDomain {
         this.mySorted.clear();
     }
 
-
-
-
-
-
-
-
-
-
     public ArrayList<Competitor> sortCompetitorBySenior() { // Lasse
         ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();
         ArrayList<Competitor> sortedSenior = new ArrayList<>();
@@ -234,7 +225,38 @@ public class DolphinDomain {
         }
         return topFive.toString();
     }
+
+    public String printExerciserList(){ // Lasse
+        ArrayList<Member> unsortedExerciser = files.readExerciserFile();
+        ArrayList<Member> juniorExerciser = new ArrayList<>();
+        ArrayList<Member> seniorExerciser = new ArrayList<>();
+        for(Member member:unsortedExerciser)
+            if(member.getAge() < 18)
+                juniorExerciser.add(member);
+            else if(member.getAge() >= 18)
+                seniorExerciser.add(member);
+        return "Junior Motionist Hold:\n" +
+                juniorExerciser +
+                "\nSenior Motionist Hold:\n" +
+                seniorExerciser;
+    }
+
+    public String printCompetitorList(){ // Lasse
+        ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();
+        ArrayList<Competitor> juniorCompetitor = new ArrayList<>();
+        ArrayList<Competitor> seniorCompetitor = new ArrayList<>();
+        for(Competitor member:unsortedCompetitor)
+            if(member.getAge() < 18)
+                juniorCompetitor.add(member);
+            else if(member.getAge() >= 18)
+                seniorCompetitor.add(member);
+        return "Junior Konkurrencesvømmer Hold:\n" +
+                juniorCompetitor +
+                "\nSenior Konkurrencesvømmer Hold:\n" +
+                seniorCompetitor;
+    }
 }
+
 
 
 

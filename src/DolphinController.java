@@ -82,4 +82,12 @@ public class DolphinController {
         return domain.getSeniorTopFiveBrystsvømning();
     }
 
+    public String printExerciserList(){ // Lasse
+        return domain.printExerciserList();
+    }
+
+    public String printCompetitorList(){ // Lasse
+        return domain.printCompetitorList();
+    }
+
 }

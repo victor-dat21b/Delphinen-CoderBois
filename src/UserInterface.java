@@ -30,16 +30,25 @@ public class UserInterface {
 
                     option1();
 
-
                 } else if (userInput == 2){
 
-                    System.out.println("The expected income is = " + controller.calculateIncome());
+                    System.out.println("Den forventede indkomst = " + controller.calculateIncome() + "kr");
 
                 }else if (userInput == 3){
-
-                    System.out.println(new FileHandler().readExerciserFile());
-                    System.out.println(new FileHandler().readCompetitorFile());
-
+                    System.out.println("""
+                            Vil du printe liste med motionister eller konkurrencesvømmere?
+                            1: Motionister.
+                            2: konkurrencesvømmere.""");
+                    System.out.print("Valg: ");
+                    int choice = in.nextInt();
+                    if(choice == 1){
+                        System.out.println(controller.printExerciserList());
+                    }
+                    else if(choice == 2){
+                        System.out.println(controller.printCompetitorList());
+                    }
+                    else
+                        System.out.println("Forkert input, returnere til hovedmenu.\n");
                 }else if (userInput == 4){
 
                     System.out.println("Konkurrencetider");
