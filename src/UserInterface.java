@@ -388,7 +388,7 @@ public class UserInterface {
         }
     }
 
-    public void updateCompetitorTime() {
+    public void updateCompetitorTime() {//Victor
         in.nextLine();
         System.out.println("Indtast navnet på det medlem du ønsker at opdatere tiden for:");
         String stringUserInput = in.nextLine();
@@ -416,12 +416,6 @@ public class UserInterface {
                             System.out.println("Indtast dato i format 00-00-0000");
                             String stringDato = in.nextLine();
                             controller.setCompetitiveTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
-
-
-
-
-
-
 
                         }
                     } else if (in.hasNextLine()) {

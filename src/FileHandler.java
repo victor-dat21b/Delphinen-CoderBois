@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    public ArrayList<Member> readExerciserFile() {
+    public ArrayList<Member> readExerciserFile() {//Victor
         ArrayList<Member> myMembers = new ArrayList<>();
         try {
             File myFile = new File("Exerciser.csv");
@@ -24,7 +24,7 @@ public class FileHandler {
         return myMembers;
     }
 
-    public ArrayList<Competitor> readCompetitorFile() {
+    public ArrayList<Competitor> readCompetitorFile() {//Victor
         /*
         OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
         bliver derfor ikke gemt. Vi gemmer kun ét stævne.
@@ -45,14 +45,6 @@ public class FileHandler {
                     counterString = counterString + 3;
                     counterTime = counterTime + 3;
                     counterDate = counterDate + 3;
-                }
-                if (myCompetitor.getTournamentCheck()) {
-                    int startPlace = counterDate + 1;
-                    for (int j = startPlace; j != data.length; j++) {
-                        myCompetitor.setTournamentInformation(data[j]); //add information
-                    }
-                } else {
-
                 }
                 myMembers.add(myCompetitor);
             }
@@ -119,7 +111,7 @@ public class FileHandler {
 
 
 
-    public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){
+    public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){ //Victor
         ArrayList<String> myStrings = new ArrayList<>();
         StringBuilder myBuilder = new StringBuilder();
         try {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Competitor extends Member {
     private int amountTrainingDiscipline;
-    private boolean booleanTournmanetCheck;
+    private boolean booleanTournmanetCheck; //Void, possible delete
     ArrayList<String> tournamentInformation = new ArrayList<>();
     private double crawlTime = 0.0;
     private double rygCrawlTime = 0.0;
