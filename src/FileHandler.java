@@ -55,7 +55,7 @@ public class FileHandler {
         return myMembers;
     }
 
-    public ArrayList<String> readTournamentInfo(){
+    public ArrayList<String> readTournamentInfo(){//Troels
         String[] data = new String[0];
         ArrayList<String> tournamentInfo = new ArrayList<>();
         try{
@@ -75,7 +75,7 @@ public class FileHandler {
     }
 
 
-    public String writeExerciserFile(String data) {
+    public String writeExerciserFile(String data) {//Troels
 
         try {
             FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
@@ -92,7 +92,7 @@ public class FileHandler {
         return "Medlem oprettet!";
     }
 
-    public String writeCompetitorFile(String data) {
+    public String writeCompetitorFile(String data) {//Troels
 
         try {
             FileWriter fileWriter = new FileWriter("competitors.csv", true);
@@ -170,7 +170,7 @@ public class FileHandler {
 
         }
 
-    public String writeTournamentInfo(String data){
+    public String writeTournamentInfo(String data){//Troels
 
         try {
             FileWriter fileWriter = new FileWriter("TournamentInfo.csv");

@@ -7,19 +7,19 @@ public class DolphinDomain {
     ArrayList<String> stringSorted = new ArrayList<>();
     FileHandler files = new FileHandler();
 
-    public String creatMemberC(String data) {
+    public String creatMemberC(String data) {//Troels
         return files.writeCompetitorFile(data);
     }
 
-    public String creatMemberE(String data) {
+    public String creatMemberE(String data) {//Troels
         return files.writeExerciserFile(data);
     }
 
-    public String writeTournamentInfo(String data){
+    public String writeTournamentInfo(String data){//Troels
         return files.writeTournamentInfo(data);
     }
 
-    public ArrayList<String> readTournamentInfo(){
+    public ArrayList<String> readTournamentInfo(){//Troels
         return files.readTournamentInfo();
     }
 

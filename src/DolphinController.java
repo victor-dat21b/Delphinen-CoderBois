@@ -5,19 +5,19 @@ public class DolphinController {
     DolphinDomain domain = new DolphinDomain();
 
 
-    public String createMemberC(String data){
+    public String createMemberC(String data){//Troels
         return domain.creatMemberC(data);
     }
 
-    public String createMemberE(String data){
+    public String createMemberE(String data){//Troels
         return domain.creatMemberE(data);
     }
 
-    public String createTournamentInfo(String data){
+    public String createTournamentInfo(String data){//Troels
         return domain.writeTournamentInfo(data);
     }
 
-    public ArrayList<String> readTournamentInfo(){
+    public ArrayList<String> readTournamentInfo(){//Troels
         return domain.readTournamentInfo();
     }
 
@@ -63,7 +63,7 @@ public class DolphinController {
         return domain.searchForCompetitor(stringUserInput);
     }
 
-    public ArrayList<String> searchForTournament(String stringUserInput){
+    public ArrayList<String> searchForTournament(String stringUserInput){//Troels
         return domain.searchForTournament(stringUserInput);
     }
 

@@ -59,6 +59,11 @@ public class UserInterface {
                     for (int i = 0; i < tournamentInfo.size(); i++) {
                         System.out.println(tournamentInfo.get(i));
                     }
+
+                    System.out.println("Træningstider");
+
+
+
                 } else if (userInput == 6) { // Lasse
                     System.out.println("""
                             Vælg hvilken aldersgruppe du vil se Top 5 for?
@@ -132,7 +137,7 @@ public class UserInterface {
         }
     }
 
-    public void startScreen() {
+    public void startScreen() {//Lasse
         System.out.println("""
                 --------------------------------------------------
                            Velkommen til Svømmeklubben
@@ -382,7 +387,7 @@ public class UserInterface {
 
     }
 
-    public void option4() {//Troels
+    public void option4() {//Troels & Victor
         int answer;
         boolean isValid = false;
         StringBuilder stringBuilder = new StringBuilder();
