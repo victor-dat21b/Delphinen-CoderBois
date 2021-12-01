@@ -145,7 +145,7 @@ public class UserInterface {
 
         System.out.println("Opret nyt medlem");
         in.nextLine();
-        System.out.println("Navn:");
+        System.out.println("Indtast navn: (Hvis efternavn tilføjes er formalia = John_Henriksen)");
 
         stringBuilder.append(in.nextLine()).append(',');
         tournamentInfo.append(stringBuilder);

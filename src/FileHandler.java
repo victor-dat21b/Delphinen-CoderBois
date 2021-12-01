@@ -143,6 +143,7 @@ public class FileHandler {
                         }
                         if (!changedFlag) {
                             //OBS FIX SÅ DEN FJERNE BRACKETS
+
                             myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato);
                         }else {
                             myStrings.add(Arrays.toString(data));
@@ -163,6 +164,7 @@ public class FileHandler {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 for (String i:myStrings) {
                     i = i.substring(1, i.length() - 1);
+                    i = i.replaceAll(" ", "");
                     bufferedWriter.write(i);
                     bufferedWriter.write("\n");
                 }
