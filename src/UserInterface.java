@@ -65,18 +65,20 @@ public class UserInterface {
 
 
                 } else if (userInput == 6) { // Lasse
-                    System.out.println("""
+                    System.out.print("""
                             Vælg hvilken aldersgruppe du vil se Top 5 for?
                             1: Junior Svømmere.
-                            2: Senior svømmere.""");
+                            2: Senior svømmere.
+                            Valg: """);
                     int choice = in.nextInt();
                     if (choice == 1) {
-                        System.out.println("""
+                        System.out.print("""
                                 Hvilken disciplin ønsker du at se for Junior Svømmere?
                                 1: Crawl.
                                 2: Rygcrawl.
                                 3. Butterfly.
-                                4. Brystsvømning.""");
+                                4. Brystsvømning.
+                                Valg: """);
                         int choiceTwo = in.nextInt();
                         if (choiceTwo == 1) {
                             System.out.println(controller.getJuniorTopFiveCrawl());
@@ -90,12 +92,13 @@ public class UserInterface {
                             System.out.println("Forkert input, returnere til menuen.");
                         }
                     } else if (choice == 2) {
-                        System.out.println("""
+                        System.out.print("""
                                 Hvilken disciplin ønsker du at se for Senior Svømmere?
                                 1: Crawl.
                                 2: Rygcrawl.
                                 3. Butterfly.
-                                4. Brystsvømning.""");
+                                4. Brystsvømning.
+                                Valg: """);
                         int choiceTwo = in.nextInt();
                         if (choiceTwo == 1) {
                             System.out.println(controller.getSeniorTopFiveCrawl());
