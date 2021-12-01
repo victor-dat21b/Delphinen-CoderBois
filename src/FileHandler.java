@@ -169,10 +169,11 @@ public class FileHandler {
 
 
         }
+
     public String writeTournamentInfo(String data){
 
         try {
-            FileWriter fileWriter = new FileWriter("TournamentInfo.csv", true);
+            FileWriter fileWriter = new FileWriter("TournamentInfo.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             bufferedWriter.newLine();

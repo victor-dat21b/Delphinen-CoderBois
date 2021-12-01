@@ -21,12 +21,6 @@ public class DolphinController {
         return domain.readTournamentInfo();
     }
 
-    public Member pickSwimmerFromList(){
-        return null;
-    }
-
-    public void setTrainingTime(){
-    }
 
     public void clearCache(){
         domain.clearCache();
@@ -69,6 +63,9 @@ public class DolphinController {
         return domain.searchForCompetitor(stringUserInput);
     }
 
+    public ArrayList<String> searchForTournament(String stringUserInput){
+        return domain.searchForTournament(stringUserInput);
+    }
 
     public String getSeniorTopFiveRygcrawl(){ // Lasse
         return domain.getSeniorTopFiveRygcrawl();

@@ -4,6 +4,7 @@ import java.util.Locale;
 
 public class DolphinDomain {
     ArrayList<Competitor> mySorted = new ArrayList<>();
+    ArrayList<String> stringSorted = new ArrayList<>();
     FileHandler files = new FileHandler();
 
     public String creatMemberC(String data) {
@@ -72,6 +73,24 @@ public class DolphinDomain {
         int myCounter = 1;
         for (Competitor competitor : mySorted) {
             myStringList.add(myCounter + " : " + competitor.toString());
+            myCounter++;
+        }
+        return myStringList;
+    }
+
+    public ArrayList<String> searchForTournament(String stringUserInput) { //Victor
+        ArrayList<String> myArray = files.readTournamentInfo();
+        for (String string : myArray) {
+            if (string.toLowerCase(Locale.ROOT).contains(stringUserInput)) {
+
+                this.stringSorted.add(string);
+            } else {
+            }
+        }
+        ArrayList<String> myStringList = new ArrayList<>();
+        int myCounter = 1;
+        for (String string : stringSorted) {
+            myStringList.add(myCounter + " : " + string);
             myCounter++;
         }
         return myStringList;
