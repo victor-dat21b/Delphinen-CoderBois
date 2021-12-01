@@ -142,9 +142,10 @@ public class FileHandler {
                             }
                         }
                         if (!changedFlag) {
-                            //OBS FIX SÅ DEN FJERNE BRACKETS
+                            int myAmountOfDescipline = (Integer.parseInt(data[4])+1);
+                            data[4] = String.valueOf(myAmountOfDescipline);
+                            myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato + "]");
 
-                            myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato);
                         }else {
                             myStrings.add(Arrays.toString(data));
 
@@ -165,6 +166,7 @@ public class FileHandler {
                 for (String i:myStrings) {
                     i = i.substring(1, i.length() - 1);
                     i = i.replaceAll(" ", "");
+                    i = i.replaceAll("]", "");
                     bufferedWriter.write(i);
                     bufferedWriter.write("\n");
                 }
