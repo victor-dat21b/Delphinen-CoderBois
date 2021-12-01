@@ -391,13 +391,10 @@ public class UserInterface {
     }
 
     public void option4() {//Troels & Victor
-        int answer;
-        boolean isValid = false;
-        StringBuilder stringBuilder = new StringBuilder();
-        StringBuilder ekstraBuilder = new StringBuilder();
-        String text;
+        String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
+        StringBuilder myBuilder = new StringBuilder();
         String textAnswer;
-        String finalString;
+        int intAnswer;
         ArrayList<String> tournamentInfo = controller.readTournamentInfo();
         ArrayList<String> chosenList = new ArrayList<>();
                 in.nextLine();
@@ -415,30 +412,33 @@ public class UserInterface {
                         System.out.println("Error wrong int");
                     } else{
 
-                    System.out.println("Indtast turnerings informationer");
-                    System.out.println("Sted,Disciplin,Tid,Dato,Placering");
-                    ekstraBuilder.append(',');
-                    ekstraBuilder.append(in.nextLine());
-
-                    stringBuilder.append(ekstraBuilder);
+                        System.out.println("Indtast navnet for Stævnet");
+                        textAnswer = in.nextLine();
+                        myBuilder.append(textAnswer).append(",");
+                        System.out.println("Indtast dato for stævnet i format 00-00-0000");
+                        textAnswer = in.nextLine();
+                        myBuilder.append(textAnswer).append(",");
+                        for (String i:dicipline){
+                            System.out.println("Har svømmeren deltaget i disciplinen " + i + "?");
+                            System.out.println("Indtast tallet 1 for Ja, eller 2 for nej.");
+                            intAnswer = in.nextInt();
+                            if (intAnswer == 1){
+                                myBuilder.append(i).append(",");
+                                System.out.println("Indtast tid i format 0.0 eller 0.00");
+                                textAnswer = in.nextLine();
+                                myBuilder.append(textAnswer).append(",");
+                                System.out.println("Indtast plads: (Eventuelt som 1.Plads eller 2.Plads. Ingen komma!)");
+                                textAnswer = in.nextLine();
+                                myBuilder.append(textAnswer).append(",");
+                            } else{
+                            }
+                            controller.setTournamentInformation(chooseCompetitorInt, myBuilder.toString());
+                        }
 
                 }
                 }else{
                     System.out.println("Ingen match på det navn");
                 }
-
-
-
-
-                finalString = stringBuilder.toString();
-
-                tournamentInfo.add(finalString);
-
-                for (int i = 0; i < tournamentInfo.size(); i++) {
-                    finalString = tournamentInfo.get(i);
-                    controller.createTournamentInfo(finalString);
-                }
-
 
     }
 

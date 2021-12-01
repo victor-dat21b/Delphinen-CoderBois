@@ -87,4 +87,10 @@ public class DolphinController {
         return domain.printCompetitorList();
     }
 
+
+
+    public void setTournamentInformation(int chosenInt, String dataToWrite){
+
+    }
+
 }
