@@ -77,7 +77,6 @@ public class Competitor extends Member {
         return "Navn = " + super.getName() +
                 ". Alder = " + super.getAge() +
                 ". Aktive Discipliner = " + amountTrainingDiscipline +
-                ". Antal Turneringer = " + booleanTournmanetCheck +
                 ". Crawl = " + this.crawlTime +
                 ". Rygcrawl = " + this.rygCrawlTime +
                 ". Brystsvømning = " + this.brystsvømningTime +

@@ -97,6 +97,17 @@ public class DolphinDomain {
     }
 
 
+    public void setTournament(){
+        /*
+        text = chosenList.toString();
+        text = text.substring(1, text.length() - 1);
+        System.out.println(text);
+        stringBuilder.append(text);
+
+         */
+    }
+
+
     public void setCompetitorTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
         chooseCompetitorInt = chooseCompetitorInt -1;
         Competitor myCompetitor = this.mySorted.get(chooseCompetitorInt);

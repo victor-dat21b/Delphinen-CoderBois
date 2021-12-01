@@ -16,9 +16,9 @@ public class UserInterface {
             System.out.println("""
                     1: Opret medlem.
                     2: Se økonomi.
-                    3: Liste over medlemmer.
-                    4: Turnerings information og svømmetider for konkurrencesvømmere.
-                    5: Træningsresultater for konkurrencesvømmere.
+                    3: Liste over medlemmer og træningsinformation for konkurrencesvømmere.
+                    4: Sæt turneringsinformation ogfor konkurrencesvømmere.
+                    5: Se tourningeringsinformation for konkurrencesvømmere.
                     6: Top 5 tider for konkurrencesvømmere.
                     7: Medlemmer i restance.
                     8. Opdater tid for konkurrencesvømmer.
@@ -55,8 +55,10 @@ public class UserInterface {
                     option4();
 
                 } else if (userInput == 5) {
-
-                    System.out.println("Træningstider");
+                    ArrayList<String> tournamentInfo = controller.readTournamentInfo();
+                    for (int i = 0; i < tournamentInfo.size(); i++) {
+                        System.out.println(tournamentInfo.get(i));
+                    }
                 } else if (userInput == 6) { // Lasse
                     System.out.println("""
                             Vælg hvilken aldersgruppe du vil se Top 5 for?
@@ -390,22 +392,7 @@ public class UserInterface {
         String finalString;
         ArrayList<String> tournamentInfo = controller.readTournamentInfo();
         ArrayList<String> chosenList = new ArrayList<>();
-
-        for (int i = 0; i < tournamentInfo.size(); i++) {
-            System.out.println(tournamentInfo.get(i));
-        }
-        System.out.println("");
-        do {
-            System.out.println("Ønsker du at tilføje turnerings informationer?");
-            System.out.println("""
-                    1. Ja
-                    2. Nej
-                    (Brug tal)""");
-            in.nextLine();
-            answer = Integer.parseInt(in.nextLine());
-
-            if (answer == 1) {
-
+                in.nextLine();
                 System.out.println("Hvem har deltaget i en turnering?");
                 System.out.println("(Fulde navn)");
 
@@ -413,13 +400,12 @@ public class UserInterface {
 
                 chosenList = (controller.searchForTournament(textAnswer));
 
-                if(!chosenList.isEmpty()){
-
-                    text = chosenList.toString();
-                    text = text.substring(1, text.length() - 1);
-                    text.replaceAll("]", "");
-
-                    stringBuilder.append(text);
+                if(!chosenList.isEmpty()) {
+                    System.out.println("Insert int for what competitor you wish to choose");
+                    int chooseCompetitorInt = in.nextInt();
+                    if (chooseCompetitorInt < 1 || chooseCompetitorInt > chosenList.size()) {
+                        System.out.println("Error wrong int");
+                    } else{
 
                     System.out.println("Indtast turnerings informationer");
                     System.out.println("Sted,Disciplin,Tid,Dato,Placering");
@@ -428,6 +414,7 @@ public class UserInterface {
 
                     stringBuilder.append(ekstraBuilder);
 
+                }
                 }else{
                     System.out.println("Ingen match på det navn");
                 }
@@ -444,15 +431,6 @@ public class UserInterface {
                     controller.createTournamentInfo(finalString);
                 }
 
-
-
-                isValid = true;
-            } else if (answer == 2) {
-                isValid = true;
-            } else {
-                System.out.println("Ikke gyldigt input");
-            }
-        } while (!isValid);
 
     }
 
