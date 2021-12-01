@@ -425,9 +425,7 @@ public class UserInterface {
         } else{
             System.out.println("Ingen konkurrencesvømmetr fundet, prøv igen");
         }
-
-
-        controller.domain.mySorted.clear();
+        controller.clearCache();
     }
 
 }

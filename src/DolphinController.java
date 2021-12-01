@@ -26,7 +26,10 @@ public class DolphinController {
     }
 
     public void setTrainingTime(){
+    }
 
+    public void clearCache(){
+        domain.clearCache();
     }
 
     public void setCompetitiveTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){

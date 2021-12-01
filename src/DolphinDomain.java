@@ -84,7 +84,11 @@ public class DolphinDomain {
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
         String myDiscipline = dicipline[(disciplineInt-1)];
         files.editCompetitorFile(myCompetitor, myDiscipline, stringTime, stringDato);
+    }
 
+
+    public void clearCache(){
+        this.mySorted.clear();
     }
 
 

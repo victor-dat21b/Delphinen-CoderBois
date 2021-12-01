@@ -120,8 +120,9 @@ public class FileHandler {
 
 
     public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){
+        ArrayList<String> myStrings = new ArrayList<>();
         StringBuilder myBuilder = new StringBuilder();
-            try {
+        try {
                 File myFile = new File("competitors.csv");
                 Scanner myReader = new Scanner(myFile);
                 while (myReader.hasNextLine()) {
@@ -139,34 +140,33 @@ public class FileHandler {
                             }else {
                                 myCounter = myCounter + 3;
                             }
-                            if (!changedFlag) {
-                                myBuilder.append(Arrays.toString(data));
-                                myBuilder.append(",");
-                                myBuilder.append(myDiscipline).append(",").append(stringTime).append(",").append(stringDato);
-                                myBuilder.append("\n");
-                            }else {
-                                myBuilder.append(Arrays.toString(data));
-                                myBuilder.append("\n");
-                            }
+                        }
+                        if (!changedFlag) {
+                            //OBS FIX SÅ DEN FJERNE BRACKETS
+                            myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato);
+                        }else {
+                            myStrings.add(Arrays.toString(data));
 
                         }
                     }else {
-                        myBuilder.append(Arrays.toString(data));
-                        myBuilder.append("\n");
+                        myStrings.add(Arrays.toString(data));
                     }
                 }
+                myReader.close();
             } catch (Exception e) {
                 System.out.println("Error");
             }
 
-        System.out.println(myBuilder);
+        System.out.println(myStrings);
         try {
             FileWriter fileWriter = new FileWriter("competitors.csv", false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            bufferedWriter.write(String.valueOf(myBuilder));
-
-
+                for (String i:myStrings) {
+                    i = i.substring(1, i.length() - 1);
+                    bufferedWriter.write(i);
+                    bufferedWriter.write("\n");
+                }
+                bufferedWriter.close();
         } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
