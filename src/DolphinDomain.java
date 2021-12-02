@@ -280,15 +280,17 @@ public class DolphinDomain {
     }
 
     public void setTournamentInformation(int chosenInt, String dataToWrite) {
-        String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
-        String myCompetitor = "";
-        for (String s:this.stringSorted){
-            if (Character.getNumericValue(s.charAt(0))== chosenInt){
-                myCompetitor = s;
-            }
-        }
-        myCompetitor = myCompetitor.substring(3, myCompetitor.length());
-        files.setTournamentInfo(myCompetitor);
+        StringBuilder myBuilder = new StringBuilder();
+        String myCompetitor = this.stringSorted.get((chosenInt-1));
+        myCompetitor = myCompetitor.substring(1, myCompetitor.length() - 1);
+        myCompetitor = myCompetitor.replaceAll(" ", "");
+        String[] myCompetitorData = myCompetitor.split(",");
+        myBuilder.append(myCompetitorData[0]);
+        myBuilder.append(",");
+        myBuilder.append(myCompetitorData[1]);
+        myBuilder.append(",");
+        myBuilder.append(dataToWrite);
+        files.setTournamentInfo(myBuilder.toString());
 }
 
 

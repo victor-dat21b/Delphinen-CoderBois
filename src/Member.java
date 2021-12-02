@@ -12,22 +12,6 @@ public abstract class Member { //Lasse
         this.arrears = arrears;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
-    }
-
-    public void setArrears(boolean arrears) {
-        this.arrears = arrears;
-    }
-
     public String getName() {
         return name;
     }
@@ -42,10 +26,6 @@ public abstract class Member { //Lasse
 
     public boolean getArrears() {
         return arrears;
-    }
-
-    public boolean getActive(boolean active) {
-        return this.active;
     }
 
 

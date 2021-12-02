@@ -179,7 +179,7 @@ public class FileHandler {
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split(",");
                 if (data[0].equals(myCompetitorData[0]) && (data[1]).equals(myCompetitorData[1])) {
-                    toWriteCompetitors.add(myCompetitor);
+                    toWriteCompetitors.add("[" + myCompetitor);
                 }else {
                     toWriteCompetitors.add(Arrays.toString(data));
                 }
@@ -191,7 +191,7 @@ public class FileHandler {
 
         try {
 
-            FileWriter fileWriter = new FileWriter("competitors.csv", false);
+            FileWriter fileWriter = new FileWriter("TournamentInfo.csv", false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String i:toWriteCompetitors) {
                 i = i.substring(1, i.length() - 1);
@@ -210,11 +210,11 @@ public class FileHandler {
     public String createTournamentInfo(String data){//Troels
 
         try {
-            FileWriter fileWriter = new FileWriter("TournamentInfo.csv");
+            FileWriter fileWriter = new FileWriter("TournamentInfo.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.newLine();
             bufferedWriter.write(data);
+            bufferedWriter.newLine();
             bufferedWriter.close();
 
         } catch (Exception e) {

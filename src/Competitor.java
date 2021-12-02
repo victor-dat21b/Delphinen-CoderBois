@@ -41,18 +41,10 @@ public class Competitor extends Member {
         }
     }
 
-    public void setTournamentInformation(String info) {
-        this.tournamentInformation.add(info);
-    }
-
     public int getAmountTrainingDiscipline() {
         return this.amountTrainingDiscipline;
     }
 
-
-    public boolean getTournamentCheck() {
-        return this.booleanTournmanetCheck;
-    }
 
 
     public double getCrawlTime() {

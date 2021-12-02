@@ -145,7 +145,7 @@ public class UserInterface {
                 --------------------------------------------------""");
     }
 
-    public void option1() {//Troels & Victor
+    public void option1() {//Troels
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
         StringBuilder tournamentInfo = new StringBuilder();
@@ -387,7 +387,7 @@ public class UserInterface {
 
     }
 
-    public void setTournamentInformation() {//Troels & Victor
+    public void setTournamentInformation() {//Victor
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
         StringBuilder myBuilder = new StringBuilder();
         String textAnswer;
