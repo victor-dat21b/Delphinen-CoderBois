@@ -14,7 +14,7 @@ public class DolphinController {
     }
 
     public String createTournamentInfo(String data){//Troels
-        return domain.writeTournamentInfo(data);
+        return domain.createTournamentInfo(data);
     }
 
     public ArrayList<String> readTournamentInfo(){//Troels
@@ -22,8 +22,12 @@ public class DolphinController {
     }
 
 
-    public void clearCache(){
+    public void clearCacheTrainingInfo(){
         domain.clearCache();
+    }
+
+    public void clearCacheTournamentInfo(){
+        domain.clearCacheTrainingInfo();
     }
 
     public void setCompetitiveTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
@@ -90,7 +94,7 @@ public class DolphinController {
 
 
     public void setTournamentInformation(int chosenInt, String dataToWrite){
-
+        domain.setTournamentInformation(chosenInt, dataToWrite);
     }
 
 }

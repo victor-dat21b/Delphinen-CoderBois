@@ -41,18 +41,16 @@ public class UserInterface {
                             2: konkurrencesvømmere.""");
                     System.out.print("Valg: ");
                     int choice = in.nextInt();
-                    if(choice == 1){
+                    if (choice == 1) {
                         System.out.println(controller.printExerciserList());
-                    }
-                    else if(choice == 2){
+                    } else if (choice == 2) {
                         System.out.println(controller.printCompetitorList());
-                    }
-                    else
+                    } else
                         System.out.println("Forkert input, returnere til hovedmenu.\n");
                 } else if (userInput == 4) {
 
                     System.out.println("Konkurrencetider");
-                    option4();
+                    setTournamentInformation();
 
                 } else if (userInput == 5) {
                     ArrayList<String> tournamentInfo = controller.readTournamentInfo();
@@ -61,7 +59,6 @@ public class UserInterface {
                     }
 
                     System.out.println("Træningstider");
-
 
 
                 } else if (userInput == 6) { // Lasse
@@ -390,57 +387,57 @@ public class UserInterface {
 
     }
 
-    public void option4() {//Troels & Victor
+    public void setTournamentInformation() {//Troels & Victor
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
         StringBuilder myBuilder = new StringBuilder();
         String textAnswer;
         int intAnswer;
         ArrayList<String> tournamentInfo = controller.readTournamentInfo();
         ArrayList<String> chosenList = new ArrayList<>();
+        in.nextLine();
+        System.out.println("Indtast navn på den person du ønsker at ændre turneringsinformation på");
+        textAnswer = in.nextLine();
+        chosenList = (controller.searchForTournament(textAnswer));
+        System.out.println(chosenList);
+
+        if (!chosenList.isEmpty()) {
+            System.out.println("Insert int for what competitor you wish to choose");
+            int chooseCompetitorInt = in.nextInt();
+            if (chooseCompetitorInt < 1 || chooseCompetitorInt > chosenList.size()) {
+                System.out.println("Error wrong int");
+            } else {
                 in.nextLine();
-                System.out.println("Hvem har deltaget i en turnering?");
-                System.out.println("(Fulde navn)");
-
+                System.out.println("Indtast navnet for Stævnet");
                 textAnswer = in.nextLine();
-
-                chosenList = (controller.searchForTournament(textAnswer));
-
-                if(!chosenList.isEmpty()) {
-                    System.out.println("Insert int for what competitor you wish to choose");
-                    int chooseCompetitorInt = in.nextInt();
-                    if (chooseCompetitorInt < 1 || chooseCompetitorInt > chosenList.size()) {
-                        System.out.println("Error wrong int");
-                    } else{
-
-                        System.out.println("Indtast navnet for Stævnet");
+                myBuilder.append(textAnswer).append(",");
+                System.out.println("Indtast dato for stævnet i format 00-00-0000");
+                textAnswer = in.nextLine();
+                myBuilder.append(textAnswer).append(",");
+                for (String i : dicipline) {
+                    System.out.println("Har svømmeren deltaget i disciplinen " + i + "?");
+                    System.out.println("Indtast tallet 1 for Ja, eller 2 for nej.");
+                    intAnswer = in.nextInt();
+                    if (intAnswer == 1) {
+                        myBuilder.append(i).append(",");
+                        System.out.println("Indtast tid i format 0.0 eller 0.00");
+                        in.nextLine();
                         textAnswer = in.nextLine();
                         myBuilder.append(textAnswer).append(",");
-                        System.out.println("Indtast dato for stævnet i format 00-00-0000");
+                        System.out.println("Indtast plads: (Eventuelt som 1.Plads eller 2.Plads. Ingen komma!)");
                         textAnswer = in.nextLine();
                         myBuilder.append(textAnswer).append(",");
-                        for (String i:dicipline){
-                            System.out.println("Har svømmeren deltaget i disciplinen " + i + "?");
-                            System.out.println("Indtast tallet 1 for Ja, eller 2 for nej.");
-                            intAnswer = in.nextInt();
-                            if (intAnswer == 1){
-                                myBuilder.append(i).append(",");
-                                System.out.println("Indtast tid i format 0.0 eller 0.00");
-                                textAnswer = in.nextLine();
-                                myBuilder.append(textAnswer).append(",");
-                                System.out.println("Indtast plads: (Eventuelt som 1.Plads eller 2.Plads. Ingen komma!)");
-                                textAnswer = in.nextLine();
-                                myBuilder.append(textAnswer).append(",");
-                            } else{
-                            }
-                            controller.setTournamentInformation(chooseCompetitorInt, myBuilder.toString());
-                        }
-
+                    } else {
+                    }
                 }
-                }else{
-                    System.out.println("Ingen match på det navn");
-                }
+                controller.setTournamentInformation(chooseCompetitorInt, myBuilder.toString());
 
+            }
+        } else {
+            System.out.println("Ingen match på det navn");
+        }
+        controller.clearCacheTournamentInfo();
     }
+
 
     public void updateCompetitorTime() {//Victor
         in.nextLine();
@@ -482,7 +479,7 @@ public class UserInterface {
         } else {
             System.out.println("Ingen konkurrencesvømmere fundet, prøv igen");
         }
-        controller.clearCache();
+        controller.clearCacheTrainingInfo();
     }
 
 }

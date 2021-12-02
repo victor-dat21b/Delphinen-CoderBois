@@ -15,11 +15,11 @@ public class DolphinDomain {
         return files.writeExerciserFile(data);
     }
 
-    public String writeTournamentInfo(String data){//Troels
-        return files.writeTournamentInfo(data);
+    public String createTournamentInfo(String data) {//Troels
+        return files.createTournamentInfo(data);
     }
 
-    public ArrayList<String> readTournamentInfo(){//Troels
+    public ArrayList<String> readTournamentInfo() {//Troels
         return files.readTournamentInfo();
     }
 
@@ -97,27 +97,16 @@ public class DolphinDomain {
     }
 
 
-    public void setTournament(){
-        /*
-        text = chosenList.toString();
-        text = text.substring(1, text.length() - 1);
-        System.out.println(text);
-        stringBuilder.append(text);
-
-         */
-    }
-
-
-    public void setCompetitorTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
-        chooseCompetitorInt = chooseCompetitorInt -1;
+    public void setCompetitorTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato) {
+        chooseCompetitorInt = chooseCompetitorInt - 1;
         Competitor myCompetitor = this.mySorted.get(chooseCompetitorInt);
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
-        String myDiscipline = dicipline[(disciplineInt-1)];
+        String myDiscipline = dicipline[(disciplineInt - 1)];
         files.editCompetitorFile(myCompetitor, myDiscipline, stringTime, stringDato);
     }
 
 
-    public void clearCache(){
+    public void clearCache() {
         this.mySorted.clear();
     }
 
@@ -256,14 +245,14 @@ public class DolphinDomain {
         return topFive.toString();
     }
 
-    public String printExerciserList(){ // Lasse
+    public String printExerciserList() { // Lasse
         ArrayList<Member> unsortedExerciser = files.readExerciserFile();
         ArrayList<Member> juniorExerciser = new ArrayList<>();
         ArrayList<Member> seniorExerciser = new ArrayList<>();
-        for(Member member:unsortedExerciser)
-            if(member.getAge() < 18)
+        for (Member member : unsortedExerciser)
+            if (member.getAge() < 18)
                 juniorExerciser.add(member);
-            else if(member.getAge() >= 18)
+            else if (member.getAge() >= 18)
                 seniorExerciser.add(member);
         return "Junior Motionist Hold:\n" +
                 juniorExerciser +
@@ -271,20 +260,38 @@ public class DolphinDomain {
                 seniorExerciser;
     }
 
-    public String printCompetitorList(){ // Lasse
+    public String printCompetitorList() { // Lasse
         ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();
         ArrayList<Competitor> juniorCompetitor = new ArrayList<>();
         ArrayList<Competitor> seniorCompetitor = new ArrayList<>();
-        for(Competitor member:unsortedCompetitor)
-            if(member.getAge() < 18)
+        for (Competitor member : unsortedCompetitor)
+            if (member.getAge() < 18)
                 juniorCompetitor.add(member);
-            else if(member.getAge() >= 18)
+            else if (member.getAge() >= 18)
                 seniorCompetitor.add(member);
         return "Junior Konkurrencesvømmer Hold:\n" +
                 juniorCompetitor +
                 "\nSenior Konkurrencesvømmer Hold:\n" +
                 seniorCompetitor;
     }
+
+    public void clearCacheTrainingInfo() {
+        this.stringSorted.clear();
+    }
+
+    public void setTournamentInformation(int chosenInt, String dataToWrite) {
+        String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
+        String myCompetitor = "";
+        for (String s:this.stringSorted){
+            if (Character.getNumericValue(s.charAt(0))== chosenInt){
+                myCompetitor = s;
+            }
+        }
+        myCompetitor = myCompetitor.substring(3, myCompetitor.length());
+        files.setTournamentInfo(myCompetitor);
+}
+
+
 }
 
 

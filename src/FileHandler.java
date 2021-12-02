@@ -170,7 +170,44 @@ public class FileHandler {
 
         }
 
-    public String writeTournamentInfo(String data){//Troels
+    public void setTournamentInfo(String myCompetitor){//Victor
+        ArrayList<String> toWriteCompetitors = new ArrayList<>();
+        try {
+            String[] myCompetitorData = myCompetitor.split(",");
+            File myFile = new File("TournamentInfo.csv");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()) {
+                String[] data = myReader.nextLine().split(",");
+                if (data[0].equals(myCompetitorData[0]) && (data[1]).equals(myCompetitorData[1])) {
+                    toWriteCompetitors.add(myCompetitor);
+                }else {
+                    toWriteCompetitors.add(Arrays.toString(data));
+                }
+            }
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+        try {
+
+            FileWriter fileWriter = new FileWriter("competitors.csv", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (String i:toWriteCompetitors) {
+                i = i.substring(1, i.length() - 1);
+                i = i.replaceAll(" ", "");
+                bufferedWriter.write(i);
+                bufferedWriter.write("\n");
+            }
+            bufferedWriter.close();
+
+        } catch (Exception e) {
+            System.out.println("Noget gik galt....");
+        }
+
+    }
+
+    public String createTournamentInfo(String data){//Troels
 
         try {
             FileWriter fileWriter = new FileWriter("TournamentInfo.csv");
