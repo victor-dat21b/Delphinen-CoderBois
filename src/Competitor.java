@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Competitor extends Member {
     private int amountTrainingDiscipline;
-    private boolean booleanTournmanetCheck;
+    private boolean booleanTournmanetCheck; //Void, possible delete
     ArrayList<String> tournamentInformation = new ArrayList<>();
     private double crawlTime = 0.0;
     private double rygCrawlTime = 0.0;
@@ -75,8 +75,8 @@ public class Competitor extends Member {
     @Override
     public String toString() {
         return "Navn = " + super.getName() +
+                ". Alder = " + super.getAge() +
                 ". Aktive Discipliner = " + amountTrainingDiscipline +
-                ". Antal Turneringer = " + booleanTournmanetCheck +
                 ". Crawl = " + this.crawlTime +
                 ". Rygcrawl = " + this.rygCrawlTime +
                 ". Brystsvømning = " + this.brystsvømningTime +

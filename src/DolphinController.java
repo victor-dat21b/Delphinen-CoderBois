@@ -5,23 +5,29 @@ public class DolphinController {
     DolphinDomain domain = new DolphinDomain();
 
 
-    public String createMemberC(String data){
+    public String createMemberC(String data){//Troels
         return domain.creatMemberC(data);
     }
 
-    public String createMemberE(String data){
+    public String createMemberE(String data){//Troels
         return domain.creatMemberE(data);
     }
 
-    public Member pickSwimmerFromList(){
-        return null;
+    public String createTournamentInfo(String data){//Troels
+        return domain.writeTournamentInfo(data);
     }
 
-    public void setTrainingTime(){
-
+    public ArrayList<String> readTournamentInfo(){//Troels
+        return domain.readTournamentInfo();
     }
 
-    public void setCompetitiveTime(){
+
+    public void clearCache(){
+        domain.clearCache();
+    }
+
+    public void setCompetitiveTime(int chooseCompetitorInt, int disciplineInt, String stringTime, String stringDato){
+        domain.setCompetitorTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
     }
 
     public int calculateIncome(){
@@ -57,6 +63,9 @@ public class DolphinController {
         return domain.searchForCompetitor(stringUserInput);
     }
 
+    public ArrayList<String> searchForTournament(String stringUserInput){//Troels
+        return domain.searchForTournament(stringUserInput);
+    }
 
     public String getSeniorTopFiveRygcrawl(){ // Lasse
         return domain.getSeniorTopFiveRygcrawl();
@@ -68,6 +77,20 @@ public class DolphinController {
 
     public String getSeniorTopFiveBrystsvømning(){ // Lasse
         return domain.getSeniorTopFiveBrystsvømning();
+    }
+
+    public String printExerciserList(){ // Lasse
+        return domain.printExerciserList();
+    }
+
+    public String printCompetitorList(){ // Lasse
+        return domain.printCompetitorList();
+    }
+
+
+
+    public void setTournamentInformation(int chosenInt, String dataToWrite){
+
     }
 
 }

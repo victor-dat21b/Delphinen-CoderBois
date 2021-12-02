@@ -16,9 +16,9 @@ public class UserInterface {
             System.out.println("""
                     1: Opret medlem.
                     2: Se økonomi.
-                    3: Liste over medlemmer.
-                    4: Turnerings information og svømmetider for konkurrencesvømmere.
-                    5: Træningsresultater for konkurrencesvømmere.
+                    3: Liste over medlemmer og træningsinformation for konkurrencesvømmere.
+                    4: Sæt turneringsinformation ogfor konkurrencesvømmere.
+                    5: Se tourningeringsinformation for konkurrencesvømmere.
                     6: Top 5 tider for konkurrencesvømmere.
                     7: Medlemmer i restance.
                     8. Opdater tid for konkurrencesvømmer.
@@ -30,36 +30,55 @@ public class UserInterface {
 
                     option1();
 
-                    //Sendes over i en anden klasse med metode som opretter medlem
-                } else if (userInput == 2){
+                } else if (userInput == 2) {
 
-                    System.out.println("The expected income is = " + controller.calculateIncome());
+                    System.out.println("Den forventede indkomst = " + controller.calculateIncome() + "kr");
 
-                }else if (userInput == 3){
-
-                    System.out.println(new FileHandler().readExerciserFile());
-                    System.out.println(new FileHandler().readCompetitorFile());
-
-                }else if (userInput == 4){
+                } else if (userInput == 3) {
+                    System.out.println("""
+                            Vil du printe liste med motionister eller konkurrencesvømmere?
+                            1: Motionister.
+                            2: konkurrencesvømmere.""");
+                    System.out.print("Valg: ");
+                    int choice = in.nextInt();
+                    if(choice == 1){
+                        System.out.println(controller.printExerciserList());
+                    }
+                    else if(choice == 2){
+                        System.out.println(controller.printCompetitorList());
+                    }
+                    else
+                        System.out.println("Forkert input, returnere til hovedmenu.\n");
+                } else if (userInput == 4) {
 
                     System.out.println("Konkurrencetider");
+                    option4();
 
                 } else if (userInput == 5) {
+                    ArrayList<String> tournamentInfo = controller.readTournamentInfo();
+                    for (int i = 0; i < tournamentInfo.size(); i++) {
+                        System.out.println(tournamentInfo.get(i));
+                    }
 
                     System.out.println("Træningstider");
+
+
+
                 } else if (userInput == 6) { // Lasse
-                    System.out.println("""
+                    System.out.print("""
                             Vælg hvilken aldersgruppe du vil se Top 5 for?
                             1: Junior Svømmere.
-                            2: Senior svømmere.""");
+                            2: Senior svømmere.
+                            Valg: """);
                     int choice = in.nextInt();
                     if (choice == 1) {
-                        System.out.println("""
-                                Hvilken disciplin ønkser du at se for Junior Svømmere?
+                        System.out.print("""
+                                Hvilken disciplin ønsker du at se for Junior Svømmere?
                                 1: Crawl.
                                 2: Rygcrawl.
                                 3. Butterfly.
-                                4. Brystsvømning.""");
+                                4. Brystsvømning.
+                                Valg: """);
                         int choiceTwo = in.nextInt();
                         if (choiceTwo == 1) {
                             System.out.println(controller.getJuniorTopFiveCrawl());
@@ -73,12 +92,13 @@ public class UserInterface {
                             System.out.println("Forkert input, returnere til menuen.");
                         }
                     } else if (choice == 2) {
-                        System.out.println("""
-                                Hvilken disciplin ønkser du at se for Senior Svømmere?
+                        System.out.print("""
+                                Hvilken disciplin ønsker du at se for Senior Svømmere?
                                 1: Crawl.
                                 2: Rygcrawl.
                                 3. Butterfly.
-                                4. Brystsvømning.""");
+                                4. Brystsvømning.
+                                Valg: """);
                         int choiceTwo = in.nextInt();
                         if (choiceTwo == 1) {
                             System.out.println(controller.getSeniorTopFiveCrawl());
@@ -99,12 +119,10 @@ public class UserInterface {
                 } else if (userInput == 7) {
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
-                }else if (userInput == 8){
+                } else if (userInput == 8) {
+                    updateCompetitorTime();
 
-
-                }
-
-                else if (userInput == 0) {
+                } else if (userInput == 0) {
 
                     gameFlag = false;
 
@@ -122,7 +140,7 @@ public class UserInterface {
         }
     }
 
-    public void startScreen() {
+    public void startScreen() {//Lasse
         System.out.println("""
                 --------------------------------------------------
                            Velkommen til Svømmeklubben
@@ -130,28 +148,32 @@ public class UserInterface {
                 --------------------------------------------------""");
     }
 
-    public void option1() {//Troels
-        String[] diciplins = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
+    public void option1() {//Troels & Victor
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
-        String finalString = "";
-        int numberOfDiciplins = 0;
-
-        System.out.println("Opret nyt medlem");
-        in.nextLine();
-        System.out.println("Navn:");
-
-        stringBuilder.append(in.nextLine()).append(',');
-
-
-
-        System.out.println("Alder:");
-        stringBuilder.append(in.nextLine());
-        stringBuilder.append(',');
+        StringBuilder tournamentInfo = new StringBuilder();
+        String finalString;
+        String finalTournamentInfo;
+        int numberOfDisciplines = 0;
+        boolean beenInTournament = false;
         boolean isActive = false;
         boolean isValid = false;
         boolean isCompetitor = false;
-        int answer = 0;
+
+        System.out.println("Opret nyt medlem");
+        in.nextLine();
+        System.out.println("Indtast navn: (Hvis efternavn tilføjes er formalia = John_Henriksen)");
+
+        stringBuilder.append(in.nextLine()).append(',');
+        tournamentInfo.append(stringBuilder);
+
+        int answer;
+
+        System.out.println("Alder:");
+        answer = Integer.parseInt(in.nextLine());
+        stringBuilder.append(answer).append(',');
+        tournamentInfo.append(answer).append(',');
+
 
         do {
             System.out.println("Er medlemmet aktivt?");
@@ -209,7 +231,7 @@ public class UserInterface {
         if (answer == 1) {
 
             isValid = false;
-            int diciplinAnswer = 0;
+            int disciplineAnswer;
             List<String> myList = Arrays.asList("crawl", "butterfly", "brystsvømning", "rygcrawl");
             int myCounter = 0;
             while (myCounter != 4) {
@@ -219,8 +241,8 @@ public class UserInterface {
                             1. Ja
                             2. Nej
                             (Brug tal)""");
-                    diciplinAnswer = Integer.parseInt(in.nextLine());
-                    answer = diciplinAnswer;
+                    disciplineAnswer = Integer.parseInt(in.nextLine());
+                    answer = disciplineAnswer;
                     if (answer == 1) {
                         isValid = true;
                     } else if (answer == 2) {
@@ -230,26 +252,130 @@ public class UserInterface {
                     }
                 } while (!isValid);
 
-                if (diciplinAnswer == 1) {
+                if (disciplineAnswer == 1) {
                     stringBuilderDeci.append(myList.get(myCounter));
                     stringBuilderDeci.append(',');
                     stringBuilderDeci.append("0.0");
                     stringBuilderDeci.append(',');
                     stringBuilderDeci.append("00-00-0000");
                     stringBuilderDeci.append(',');
-                    numberOfDiciplins = numberOfDiciplins + 1;
+                    numberOfDisciplines = numberOfDisciplines + 1;
                 } else {
 
-            }
-            myCounter++;
+                }
+                myCounter++;
             }
 
-            stringBuilder.append(String.valueOf(numberOfDiciplins));
-            stringBuilder.append(',');
-            stringBuilder.append("false");
-            stringBuilder.append(',');
-            stringBuilder.append(stringBuilderDeci);
+            stringBuilder.append(String.valueOf(numberOfDisciplines)).append(',');
+
+
+            isValid = false;
+            do {
+                System.out.println("Har medlemmet deltaget i tidligere turneringer?");
+                System.out.println("""
+                        1. Ja
+                        2. Nej
+                        (Brug tal)""");
+                answer = Integer.parseInt(in.nextLine());
+                if (answer == 1) {
+                    beenInTournament = true;
+                    boolean isDone = false;
+
+                    ArrayList<String> deciList = new ArrayList<>();
+                    deciList.add("1. crawl");
+                    deciList.add("2. butterfly");
+                    deciList.add("3. brystsvømning");
+                    deciList.add("4. rygcrawl");
+                    do {
+
+                        System.out.println("Vælg disciplin");
+
+                        for (int i = 0; i < deciList.size(); i++) {
+                            System.out.println(deciList.get(i));
+                        }
+                        System.out.println("0. Færdig");
+
+                        answer = Integer.parseInt(in.nextLine());
+
+
+                        switch (answer) {
+                            case 1:
+                                System.out.println("Indtast sted");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                tournamentInfo.append("crawl").append(',');
+                                deciList.remove(0);
+                                System.out.println("""
+                                        eks. 12.23,12-03-2021
+                                        Indtast tid og dato""");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                System.out.println("Hvilken placering");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                break;
+
+                            case 2:
+                                System.out.println("Indtast sted");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                tournamentInfo.append("butterfly").append(',');
+                                deciList.remove(1);
+                                System.out.println("""
+                                        eks. 12.23,12-03-2021
+                                        Indtast tid og dato""");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                System.out.println("Hvilken placering");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                break;
+
+                            case 3:
+                                System.out.println("Indtast sted");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                tournamentInfo.append("brystsvømning").append(',');
+                                deciList.remove(2);
+                                System.out.println("""
+                                        eks. 12.23,12-03-2021
+                                        Indtast tid og dato""");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                System.out.println("Hvilken placering");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                break;
+
+                            case 4:
+                                System.out.println("Indtast sted");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                tournamentInfo.append("rygcrawl").append(',');
+                                deciList.remove(3);
+                                System.out.println("""
+                                        eks. 12.23,12-03-2021
+                                        Indtast tid og dato""");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                System.out.println("Hvilken placering");
+                                tournamentInfo.append(in.nextLine()).append(',');
+                                break;
+                            case 0:
+                                isDone = true;
+                                break;
+
+                        }
+
+                    } while (!isDone);
+
+
+                    isValid = true;
+                } else if (answer == 2) {
+                    isValid = true;
+                } else {
+                    System.out.println("Ikke gyldigt input");
+                }
+            } while (!isValid);
+
         }
+
+        stringBuilder.append(beenInTournament);
+        stringBuilder.append(',');
+        stringBuilder.append(stringBuilderDeci);
+
+
+        tournamentInfo.replace(tournamentInfo.length() - 1, tournamentInfo.length(), " ");
+        finalTournamentInfo = tournamentInfo.toString();
 
         stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), " ");
 
@@ -257,26 +383,106 @@ public class UserInterface {
 
         if (isCompetitor) {
             System.out.println(controller.createMemberC(finalString));
+            System.out.println(controller.createTournamentInfo(finalTournamentInfo));
         } else {
             System.out.println(controller.createMemberE(finalString));
         }
 
     }
 
+    public void option4() {//Troels & Victor
+        String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
+        StringBuilder myBuilder = new StringBuilder();
+        String textAnswer;
+        int intAnswer;
+        ArrayList<String> tournamentInfo = controller.readTournamentInfo();
+        ArrayList<String> chosenList = new ArrayList<>();
+                in.nextLine();
+                System.out.println("Hvem har deltaget i en turnering?");
+                System.out.println("(Fulde navn)");
 
-    public void updateCompetitorTime(){
+                textAnswer = in.nextLine();
+
+                chosenList = (controller.searchForTournament(textAnswer));
+
+                if(!chosenList.isEmpty()) {
+                    System.out.println("Insert int for what competitor you wish to choose");
+                    int chooseCompetitorInt = in.nextInt();
+                    if (chooseCompetitorInt < 1 || chooseCompetitorInt > chosenList.size()) {
+                        System.out.println("Error wrong int");
+                    } else{
+
+                        System.out.println("Indtast navnet for Stævnet");
+                        textAnswer = in.nextLine();
+                        myBuilder.append(textAnswer).append(",");
+                        System.out.println("Indtast dato for stævnet i format 00-00-0000");
+                        textAnswer = in.nextLine();
+                        myBuilder.append(textAnswer).append(",");
+                        for (String i:dicipline){
+                            System.out.println("Har svømmeren deltaget i disciplinen " + i + "?");
+                            System.out.println("Indtast tallet 1 for Ja, eller 2 for nej.");
+                            intAnswer = in.nextInt();
+                            if (intAnswer == 1){
+                                myBuilder.append(i).append(",");
+                                System.out.println("Indtast tid i format 0.0 eller 0.00");
+                                textAnswer = in.nextLine();
+                                myBuilder.append(textAnswer).append(",");
+                                System.out.println("Indtast plads: (Eventuelt som 1.Plads eller 2.Plads. Ingen komma!)");
+                                textAnswer = in.nextLine();
+                                myBuilder.append(textAnswer).append(",");
+                            } else{
+                            }
+                            controller.setTournamentInformation(chooseCompetitorInt, myBuilder.toString());
+                        }
+
+                }
+                }else{
+                    System.out.println("Ingen match på det navn");
+                }
+
+    }
+
+    public void updateCompetitorTime() {//Victor
         in.nextLine();
         System.out.println("Indtast navnet på det medlem du ønsker at opdatere tiden for:");
         String stringUserInput = in.nextLine();
         ArrayList<String> myList = controller.searchForCompetitor(stringUserInput);
-        for (String myString:myList){
-            System.out.println(myString);
+        if (!myList.isEmpty()) {
+            for (String myString : myList) {
+                System.out.println(myString);
+            }
+            System.out.println("Indtast tallet for den svømmer du ønsker at vælge:");
+            if (in.hasNextInt()) {
+                int chooseCompetitorInt = this.in.nextInt();
+                if (chooseCompetitorInt < 1 || chooseCompetitorInt > myList.size()) {
+                    System.out.println("Error wrong int");
+                } else {
+                    System.out.println("Hvilken disciplin ønsker du at indtaste tid og dato for?");
+                    System.out.println("1: crawl, 2: rygcrawl, 3: brystsvømning, 4: butterfly.");
+                    if (in.hasNextInt()) {
+                        int disciplineInt = this.in.nextInt();
+                        if (disciplineInt < 1 || disciplineInt > 4) {
+                            System.out.println("Error wrong int");
+                        } else {
+                            in.nextLine();
+                            System.out.println("Indtast tid i format 0.0 eller 0.00");
+                            String stringTime = in.nextLine();
+                            System.out.println("Indtast dato i format 00-00-0000");
+                            String stringDato = in.nextLine();
+                            controller.setCompetitiveTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
+
+                        }
+                    } else if (in.hasNextLine()) {
+                        System.out.println("Wrong input, please try again");
+                    }
+                }
+            } else if (in.hasNextLine()) {
+                System.out.println("Wrong input, please try again");
+            }
+        } else {
+            System.out.println("Ingen konkurrencesvømmere fundet, prøv igen");
         }
-        if (in.hasNextInt()){
-            int userInt = this.in.nextInt();
-        } else if (in.hasNextLine()){
-            System.out.println("Wrong input, please try again");
-        }
+        controller.clearCache();
     }
 
 }
