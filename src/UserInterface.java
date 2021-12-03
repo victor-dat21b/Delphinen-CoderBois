@@ -27,11 +27,9 @@ public class UserInterface {
             if (this.in.hasNextInt()) {
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
-
                     createMember();
 
                 } else if (userInput == 2) {
-
                     System.out.println("Den forventede indkomst = " + controller.calculateIncome() + "kr");
 
                 } else if (userInput == 3) {
@@ -47,6 +45,7 @@ public class UserInterface {
                         System.out.println(controller.printCompetitorList());
                     } else
                         System.out.println("Forkert input, returnere til hovedmenu.\n");
+
                 } else if (userInput == 4) {
 
                     System.out.println("Konkurrencetider");
@@ -57,61 +56,11 @@ public class UserInterface {
                     for (int i = 0; i < tournamentInfo.size(); i++) {
                         System.out.println(tournamentInfo.get(i));
                     }
-
                     System.out.println("Træningstider");
 
 
                 } else if (userInput == 6) { // Lasse
-                    System.out.print("""
-                            Vælg hvilken aldersgruppe du vil se Top 5 for?
-                            1: Junior Svømmere.
-                            2: Senior svømmere.
-                            Valg: """);
-                    int choice = in.nextInt();
-                    if (choice == 1) {
-                        System.out.print("""
-                                Hvilken disciplin ønsker du at se for Junior Svømmere?
-                                1: Crawl.
-                                2: Rygcrawl.
-                                3. Butterfly.
-                                4. Brystsvømning.
-                                Valg: """);
-                        int choiceTwo = in.nextInt();
-                        if (choiceTwo == 1) {
-                            System.out.println(controller.getJuniorTopFiveCrawl());
-                        } else if (choiceTwo == 2) {
-                            System.out.println(controller.getJuniorTopFiveRygcrawl());
-                        } else if (choiceTwo == 3) {
-                            System.out.println(controller.getJuniorTopFiveButterfly());
-                        } else if (choiceTwo == 4) {
-                            System.out.println(controller.getJuniorTopFiveBrystsvømning());
-                        } else {
-                            System.out.println("Forkert input, returnere til menuen.");
-                        }
-                    } else if (choice == 2) {
-                        System.out.print("""
-                                Hvilken disciplin ønsker du at se for Senior Svømmere?
-                                1: Crawl.
-                                2: Rygcrawl.
-                                3. Butterfly.
-                                4. Brystsvømning.
-                                Valg: """);
-                        int choiceTwo = in.nextInt();
-                        if (choiceTwo == 1) {
-                            System.out.println(controller.getSeniorTopFiveCrawl());
-                        } else if (choiceTwo == 2) {
-                            System.out.println(controller.getSeniorTopFiveRygcrawl());
-                        } else if (choiceTwo == 3) {
-                            System.out.println(controller.getSeniorTopFiveButterfly());
-                        } else if (choiceTwo == 4) {
-                            System.out.println(controller.getSeniorTopFiveBrystsvømning());
-                        } else {
-                            System.out.println("Forkert input, returnere til menuen.");
-                        }
-                    } else {
-                        System.out.println("Forkert input, returnere til menu.");
-                    }
-
+                    getTopFive();
 
                 } else if (userInput == 7) {
                     System.out.println("Medlemmer i restance:");
@@ -350,7 +299,7 @@ public class UserInterface {
         System.out.println("Indtast navn på den person du ønsker at ændre turneringsinformation på");
         textAnswer = in.nextLine();
         chosenList = (controller.searchForTournament(textAnswer));
-        for(String s:chosenList){
+        for (String s : chosenList) {
             System.out.println(s);
         }
 
@@ -434,6 +383,57 @@ public class UserInterface {
         System.out.println("Medlem opdateret!");
     }
 
+    public void getTopFive() {
+        System.out.print("""
+                Vælg hvilken aldersgruppe du vil se Top 5 for?
+                1: Junior Svømmere.
+                2: Senior svømmere.
+                Valg: """);
+        int choice = in.nextInt();
+        if (choice == 1) {
+            System.out.print("""
+                    Hvilken disciplin ønsker du at se for Junior Svømmere?
+                    1: Crawl.
+                    2: Rygcrawl.
+                    3. Butterfly.
+                    4. Brystsvømning.
+                    Valg: """);
+            int choiceTwo = in.nextInt();
+            if (choiceTwo == 1) {
+                System.out.println(controller.getJuniorTopFiveCrawl());
+            } else if (choiceTwo == 2) {
+                System.out.println(controller.getJuniorTopFiveRygcrawl());
+            } else if (choiceTwo == 3) {
+                System.out.println(controller.getJuniorTopFiveButterfly());
+            } else if (choiceTwo == 4) {
+                System.out.println(controller.getJuniorTopFiveBrystsvømning());
+            } else {
+                System.out.println("Forkert input, returnere til menuen.");
+            }
+        } else if (choice == 2) {
+            System.out.print("""
+                    Hvilken disciplin ønsker du at se for Senior Svømmere?
+                    1: Crawl.
+                    2: Rygcrawl.
+                    3. Butterfly.
+                    4. Brystsvømning.
+                    Valg: """);
+            int choiceTwo = in.nextInt();
+            if (choiceTwo == 1) {
+                System.out.println(controller.getSeniorTopFiveCrawl());
+            } else if (choiceTwo == 2) {
+                System.out.println(controller.getSeniorTopFiveRygcrawl());
+            } else if (choiceTwo == 3) {
+                System.out.println(controller.getSeniorTopFiveButterfly());
+            } else if (choiceTwo == 4) {
+                System.out.println(controller.getSeniorTopFiveBrystsvømning());
+            } else {
+                System.out.println("Forkert input, returnere til menuen.");
+            }
+        } else {
+            System.out.println("Forkert input, returnere til menu.");
+        }
+    }
 
 
     public void startScreen() {//Lasse
