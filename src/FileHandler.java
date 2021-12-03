@@ -55,6 +55,67 @@ public class FileHandler {
         return myMembers;
     }
 
+    public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){ //Victor
+        ArrayList<String> myStrings = new ArrayList<>();
+        StringBuilder myBuilder = new StringBuilder();
+        try {
+            File myFile = new File("competitors.csv");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()) {
+                String[] data = myReader.nextLine().split(",");
+                if (data[0].equals(myCompetitor.getName()) && Integer.parseInt(data[1]) == myCompetitor.getAge()) {
+                    int amountOfDisciplines = myCompetitor.getAmountTrainingDiscipline();
+                    int myCounter = 6;
+                    boolean changedFlag = false;
+                    for (int i = 0; i != amountOfDisciplines; i++) {
+                        if (data[myCounter].equals(myDiscipline)) {
+                            data[(myCounter+1)] = stringTime;
+                            data[(myCounter+2)] = stringDato;
+                            myCounter = myCounter +3;
+                            changedFlag = true;
+                        }else {
+                            myCounter = myCounter + 3;
+                        }
+                    }
+                    if (!changedFlag) {
+                        int myAmountOfDescipline = (Integer.parseInt(data[4])+1);
+                        data[4] = String.valueOf(myAmountOfDescipline);
+                        myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato + "]");
+
+                    }else {
+                        myStrings.add(Arrays.toString(data));
+
+                    }
+                }else {
+                    myStrings.add(Arrays.toString(data));
+                }
+            }
+            myReader.close();
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+
+        System.out.println(myStrings);
+        try {
+            FileWriter fileWriter = new FileWriter("competitors.csv", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (String i:myStrings) {
+                i = i.substring(1, i.length() - 1);
+                i = i.replaceAll(" ", "");
+                i = i.replaceAll("]", "");
+                bufferedWriter.write(i);
+                bufferedWriter.write("\n");
+            }
+            bufferedWriter.close();
+        } catch (Exception e) {
+            System.out.println("Noget gik galt....");
+        }
+
+
+    }
+
+
+
     public ArrayList<String> readTournamentInfo(){//Troels
         String[] data = new String[0];
         ArrayList<String> tournamentInfo = new ArrayList<>();
@@ -73,7 +134,6 @@ public class FileHandler {
 
         return tournamentInfo;
     }
-
 
     public String writeExerciserFile(String data) {//Troels
 
@@ -108,67 +168,6 @@ public class FileHandler {
 
         return "Medlem oprettet!";
     }
-
-
-
-    public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){ //Victor
-        ArrayList<String> myStrings = new ArrayList<>();
-        StringBuilder myBuilder = new StringBuilder();
-        try {
-                File myFile = new File("competitors.csv");
-                Scanner myReader = new Scanner(myFile);
-                while (myReader.hasNextLine()) {
-                    String[] data = myReader.nextLine().split(",");
-                    if (data[0].equals(myCompetitor.getName()) && Integer.parseInt(data[1]) == myCompetitor.getAge()) {
-                        int amountOfDisciplines = myCompetitor.getAmountTrainingDiscipline();
-                        int myCounter = 6;
-                        boolean changedFlag = false;
-                        for (int i = 0; i != amountOfDisciplines; i++) {
-                            if (data[myCounter].equals(myDiscipline)) {
-                                data[(myCounter+1)] = stringTime;
-                                data[(myCounter+2)] = stringDato;
-                                myCounter = myCounter +3;
-                                changedFlag = true;
-                            }else {
-                                myCounter = myCounter + 3;
-                            }
-                        }
-                        if (!changedFlag) {
-                            int myAmountOfDescipline = (Integer.parseInt(data[4])+1);
-                            data[4] = String.valueOf(myAmountOfDescipline);
-                            myStrings.add((Arrays.toString(data)) + "," + myDiscipline + "," + stringTime + "," + stringDato + "]");
-
-                        }else {
-                            myStrings.add(Arrays.toString(data));
-
-                        }
-                    }else {
-                        myStrings.add(Arrays.toString(data));
-                    }
-                }
-                myReader.close();
-            } catch (Exception e) {
-                System.out.println("Error");
-            }
-
-        System.out.println(myStrings);
-        try {
-            FileWriter fileWriter = new FileWriter("competitors.csv", false);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                for (String i:myStrings) {
-                    i = i.substring(1, i.length() - 1);
-                    i = i.replaceAll(" ", "");
-                    i = i.replaceAll("]", "");
-                    bufferedWriter.write(i);
-                    bufferedWriter.write("\n");
-                }
-                bufferedWriter.close();
-        } catch (Exception e) {
-            System.out.println("Noget gik galt....");
-        }
-
-
-        }
 
     public void setTournamentInfo(String myCompetitor){//Victor
         ArrayList<String> toWriteCompetitors = new ArrayList<>();
@@ -225,10 +224,3 @@ public class FileHandler {
     }
 
 }
-
-
-
-
-
-
-
