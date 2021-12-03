@@ -142,13 +142,16 @@ public class UserInterface {
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
         StringBuilder tournamentInfo = new StringBuilder();
+        StringBuilder date = new StringBuilder();
         String finalString;
         String finalTournamentInfo;
+
         int numberOfDisciplines = 0;
         boolean beenInTournament = false;
         boolean isActive = false;
         boolean isValid = false;
         boolean isCompetitor = false;
+        boolean isDone = false;
 
         System.out.println("Opret nyt medlem");
         in.nextLine();
@@ -250,9 +253,8 @@ public class UserInterface {
                     stringBuilderDeci.append("00-00-0000");
                     stringBuilderDeci.append(',');
                     numberOfDisciplines = numberOfDisciplines + 1;
-                } else {
-
                 }
+
                 myCounter++;
             }
 
@@ -260,125 +262,82 @@ public class UserInterface {
 
 
             isValid = false;
-            do {
-                System.out.println("Har medlemmet deltaget i tidligere turneringer?");
-                System.out.println("""
-                        1. Ja
-                        2. Nej
-                        (Brug tal)""");
-                answer = Integer.parseInt(in.nextLine());
-                if (answer == 1) {
-                    beenInTournament = true;
-                    boolean isDone = false;
 
-                    ArrayList<String> deciList = new ArrayList<>();
-                    deciList.add("1. crawl");
-                    deciList.add("2. butterfly");
-                    deciList.add("3. brystsvømning");
-                    deciList.add("4. rygcrawl");
+            System.out.println("Har medlemmet deltaget i tidligere turneringer?");
+            System.out.println("""
+                    1. Ja
+                    2. Nej
+                    (Brug tal)""");
+            answer = Integer.parseInt(in.nextLine());
+            if (answer == 1) {
+                beenInTournament = true;
+
+                List<String> deciList = Arrays.asList("crawl", "butterfly", "brystsvømning", "rygcrawl");
+
+
+                System.out.println("Indtast turneringsnavn");
+                tournamentInfo.append(in.nextLine()).append(',');
+
+                System.out.println("eks. xx-xx-xxxx");
+                System.out.println("Indtast dato");
+                tournamentInfo.append(in.nextLine()).append(',');
+
+
+                int myCounterSecondUse = 0;
+                while (myCounterSecondUse != 4) {
                     do {
-
-                        System.out.println("Vælg disciplin");
-
-                        for (int i = 0; i < deciList.size(); i++) {
-                            System.out.println(deciList.get(i));
+                        System.out.println("Har medlemmet svømmet " + deciList.get(myCounterSecondUse) + "?");
+                        System.out.println("""
+                                1. Ja
+                                2. Nej
+                                (Brug tal)""");
+                        disciplineAnswer = Integer.parseInt(in.nextLine());
+                        answer = disciplineAnswer;
+                        if (answer == 1) {
+                            isValid = true;
+                        } else if (answer == 2) {
+                            isValid = true;
+                        } else {
+                            System.out.println("Ikke gyldigt input");
                         }
-                        System.out.println("0. Færdig");
+                    } while (!isValid);
+                    if (disciplineAnswer == 1) {
+                        tournamentInfo.append(deciList.get(myCounterSecondUse)).append(',');
+                        System.out.println("""
+                                eks. 12.23
+                                Indtast tid""");
+                        tournamentInfo.append(in.nextLine()).append(',');
+                        System.out.println("Hvilken placering");
+                        tournamentInfo.append(in.nextLine()).append(',');
 
-                        answer = Integer.parseInt(in.nextLine());
+                    }
+                    myCounterSecondUse++;
 
-
-                        switch (answer) {
-                            case 1:
-                                System.out.println("Indtast sted");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                tournamentInfo.append("crawl").append(',');
-                                deciList.remove(0);
-                                System.out.println("""
-                                        eks. 12.23,12-03-2021
-                                        Indtast tid og dato""");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                System.out.println("Hvilken placering");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                break;
-
-                            case 2:
-                                System.out.println("Indtast sted");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                tournamentInfo.append("butterfly").append(',');
-                                deciList.remove(1);
-                                System.out.println("""
-                                        eks. 12.23,12-03-2021
-                                        Indtast tid og dato""");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                System.out.println("Hvilken placering");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                break;
-
-                            case 3:
-                                System.out.println("Indtast sted");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                tournamentInfo.append("brystsvømning").append(',');
-                                deciList.remove(2);
-                                System.out.println("""
-                                        eks. 12.23,12-03-2021
-                                        Indtast tid og dato""");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                System.out.println("Hvilken placering");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                break;
-
-                            case 4:
-                                System.out.println("Indtast sted");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                tournamentInfo.append("rygcrawl").append(',');
-                                deciList.remove(3);
-                                System.out.println("""
-                                        eks. 12.23,12-03-2021
-                                        Indtast tid og dato""");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                System.out.println("Hvilken placering");
-                                tournamentInfo.append(in.nextLine()).append(',');
-                                break;
-                            case 0:
-                                isDone = true;
-                                break;
-
-                        }
-
-                    } while (!isDone);
-
-
-                    isValid = true;
-                } else if (answer == 2) {
-                    isValid = true;
-                } else {
-                    System.out.println("Ikke gyldigt input");
                 }
-            } while (!isValid);
+
+                //stringBuilder.append(beenInTournament);
+                //stringBuilder.append(',');
+                stringBuilder.append(stringBuilderDeci);
+
+
+                tournamentInfo.replace(tournamentInfo.length() - 1, tournamentInfo.length(), "");
+                finalTournamentInfo = tournamentInfo.toString();
+
+                stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), "");
+
+                finalString = stringBuilder.toString();
+
+                if (isCompetitor) {
+                    System.out.println(controller.createMemberC(finalString));
+                    System.out.println(controller.createTournamentInfo(finalTournamentInfo));
+                } else {
+                    System.out.println(controller.createMemberE(finalString));
+                }
+            }
 
         }
-
-        //stringBuilder.append(beenInTournament);
-        //stringBuilder.append(',');
-        stringBuilder.append(stringBuilderDeci);
-
-
-        tournamentInfo.replace(tournamentInfo.length() - 1, tournamentInfo.length(), " ");
-        finalTournamentInfo = tournamentInfo.toString();
-
-        stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), " ");
-
-        finalString = stringBuilder.toString();
-
-        if (isCompetitor) {
-            System.out.println(controller.createMemberC(finalString));
-            System.out.println(controller.createTournamentInfo(finalTournamentInfo));
-        } else {
-            System.out.println(controller.createMemberE(finalString));
-        }
-
     }
+
 
     public void setTournamentInformation() {//Victor
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
@@ -473,6 +432,8 @@ public class UserInterface {
         }
         controller.clearCacheTrainingInfo();
     }
+
+
 
     public void startScreen() {//Lasse
         System.out.println("""

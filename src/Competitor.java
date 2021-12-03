@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public class Competitor extends Member {
     private int amountTrainingDiscipline;
-    private boolean booleanTournmanetCheck; //Void, possible delete
+    private boolean booleanTournmanetCheck; //Vi kunne havde brugt denne boolean som et søge ord til en
+                                            // sorteret liste for Competitors, som HAR deltaget i en turnering
+                                            //Vi opdagede dog det først i sidste øjeblik, så vi fik det ikke implementeret
     ArrayList<String> tournamentInformation = new ArrayList<>();
     private double crawlTime = 0.0;
     private double rygCrawlTime = 0.0;

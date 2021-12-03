@@ -122,8 +122,8 @@ public class FileHandler {
             FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.newLine();
             bufferedWriter.write(data);
+            bufferedWriter.newLine();
             bufferedWriter.close();
 
         } catch (Exception e) {
