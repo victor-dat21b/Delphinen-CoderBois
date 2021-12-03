@@ -1,11 +1,11 @@
 Troels,12,true,false
 Mathilde,32,true,false
 Henrik,23,true,false
-Thomas,21,true,false
+Thomas,21,true,true
 John,65,false,false
 Henriette,45,true,false
-Joe,45,true,false,false
-Mathias,16,true,false
+Joe,45,true,false
+Mathias,16,true,true
 Elias,35,false,false
 Emma,65,true,false 
 Sylvia,25,false,false

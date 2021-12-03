@@ -16,10 +16,10 @@ public class UserInterface {
             System.out.println("""
                     1: Opret medlem.
                     2: Se økonomi.
-                    3: Liste over medlemmer og træningsinformation for konkurrencesvømmere.
-                    4: Sæt turneringsinformation ogfor konkurrencesvømmere.
-                    5: Se tourningeringsinformation for konkurrencesvømmere.
-                    6: Top 5 tider for konkurrencesvømmere.
+                    3: Liste over medlemmer og træningsinformation.
+                    4: Sæt turneringsinformation.
+                    5: Se tourningeringsinformation.
+                    6: Top 5 tider.
                     7: Medlemmer i restance.
                     8. Opdater tid for konkurrencesvømmer.
                     0: Luk program.""");
@@ -350,7 +350,9 @@ public class UserInterface {
         System.out.println("Indtast navn på den person du ønsker at ændre turneringsinformation på");
         textAnswer = in.nextLine();
         chosenList = (controller.searchForTournament(textAnswer));
-        System.out.println(chosenList);
+        for(String s:chosenList){
+            System.out.println(s);
+        }
 
         if (!chosenList.isEmpty()) {
             System.out.println("Insert int for what competitor you wish to choose");
@@ -388,6 +390,7 @@ public class UserInterface {
             System.out.println("Ingen match på det navn");
         }
         controller.clearCacheTournamentInfo();
+        System.out.println("Medlem opdateret!");
     }
 
     public void updateCompetitorTime() {//Victor
@@ -396,9 +399,7 @@ public class UserInterface {
         String stringUserInput = in.nextLine();
         ArrayList<String> myList = controller.searchForCompetitor(stringUserInput);
         if (!myList.isEmpty()) {
-            for (String myString : myList) {
-                System.out.println(myString);
-            }
+            System.out.println(myList);
             System.out.println("Indtast tallet for den svømmer du ønsker at vælge:");
             if (in.hasNextInt()) {
                 int chooseCompetitorInt = this.in.nextInt();
@@ -418,7 +419,6 @@ public class UserInterface {
                             System.out.println("Indtast dato i format 00-00-0000");
                             String stringDato = in.nextLine();
                             controller.setCompetitiveTime(chooseCompetitorInt, disciplineInt, stringTime, stringDato);
-
                         }
                     } else if (in.hasNextLine()) {
                         System.out.println("Wrong input, please try again");
@@ -431,6 +431,7 @@ public class UserInterface {
             System.out.println("Ingen konkurrencesvømmere fundet, prøv igen");
         }
         controller.clearCacheTrainingInfo();
+        System.out.println("Medlem opdateret!");
     }
 
 
