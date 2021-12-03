@@ -137,13 +137,6 @@ public class UserInterface {
         }
     }
 
-    public void startScreen() {//Lasse
-        System.out.println("""
-                --------------------------------------------------
-                           Velkommen til Svømmeklubben
-                                  DELFINEN
-                --------------------------------------------------""");
-    }
 
     public void createMember() {//Troels
         StringBuilder stringBuilder = new StringBuilder();
@@ -366,8 +359,8 @@ public class UserInterface {
 
         }
 
-        stringBuilder.append(beenInTournament);
-        stringBuilder.append(',');
+        //stringBuilder.append(beenInTournament);
+        //stringBuilder.append(',');
         stringBuilder.append(stringBuilderDeci);
 
 
@@ -479,6 +472,14 @@ public class UserInterface {
             System.out.println("Ingen konkurrencesvømmere fundet, prøv igen");
         }
         controller.clearCacheTrainingInfo();
+    }
+
+    public void startScreen() {//Lasse
+        System.out.println("""
+                --------------------------------------------------
+                           Velkommen til Svømmeklubben
+                                  DELFINEN
+                --------------------------------------------------""");
     }
 
 }
