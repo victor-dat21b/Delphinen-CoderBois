@@ -116,25 +116,6 @@ public class FileHandler {
 
 
 
-    public ArrayList<String> readTournamentInfo(){//Troels
-        String[] data = new String[0];
-        ArrayList<String> tournamentInfo = new ArrayList<>();
-        try{
-            File myFile = new File("TournamentInfo.csv");
-            Scanner myReader = new Scanner(myFile);
-            while (myReader.hasNextLine()){
-                data = myReader.nextLine().split(",");
-                tournamentInfo.add(Arrays.toString(data));
-            }
-
-
-        }catch (Exception e){
-            System.out.println("Noget gik galt");
-        }
-
-        return tournamentInfo;
-    }
-
     public String writeExerciserFile(String data) {//Troels
 
         try {
@@ -167,6 +148,25 @@ public class FileHandler {
         }
 
         return "Medlem oprettet!";
+    }
+
+    public ArrayList<String> readTournamentInfo(){//Troels
+        String[] data = new String[0];
+        ArrayList<String> tournamentInfo = new ArrayList<>();
+        try{
+            File myFile = new File("TournamentInfo.csv");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()){
+                data = myReader.nextLine().split(",");
+                tournamentInfo.add(Arrays.toString(data));
+            }
+
+
+        }catch (Exception e){
+            System.out.println("Noget gik galt");
+        }
+
+        return tournamentInfo;
     }
 
     public void setTournamentInfo(String myCompetitor){//Victor
