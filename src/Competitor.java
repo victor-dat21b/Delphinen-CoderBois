@@ -47,7 +47,6 @@ public class Competitor extends Member {
         return this.amountTrainingDiscipline;
     }
 
-
     public double getCrawlTime() {
         return this.crawlTime;
     }
