@@ -17,7 +17,7 @@ public class UserInterface {
                     1: Opret medlem.
                     2: Se økonomi.
                     3: Liste over medlemmer og træningsinformation for konkurrencesvømmere.
-                    4: Sæt turneringsinformation ogfor konkurrencesvømmere.
+                    4: Sæt turneringsinformation for konkurrencesvømmere.
                     5: Se tourningeringsinformation for konkurrencesvømmere.
                     6: Top 5 tider for konkurrencesvømmere.
                     7: Medlemmer i restance.
