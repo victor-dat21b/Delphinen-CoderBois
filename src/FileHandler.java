@@ -25,11 +25,6 @@ public class FileHandler {
     }
 
     public ArrayList<Competitor> readCompetitorFile() {//Victor
-        /*
-        OBS: Vi overwriter for hver stævne en person har været til. Alle deres gamle stævne tider
-        bliver derfor ikke gemt. Vi gemmer kun ét stævne.
-        */
-
         ArrayList<Competitor> myMembers = new ArrayList<>();
         try {
             File myFile = new File("competitors.csv");
@@ -54,6 +49,7 @@ public class FileHandler {
         }
         return myMembers;
     }
+
 
 
     public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){ //Victor
@@ -111,13 +107,11 @@ public class FileHandler {
         } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
-
-
     }
 
 
-    public String writeExerciserFile(String data) {//Troels
 
+    public String writeExerciserFile(String data) {//Troels
         try {
             FileWriter fileWriter = new FileWriter("Exerciser.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -133,8 +127,9 @@ public class FileHandler {
         return "Medlem oprettet!";
     }
 
-    public String writeCompetitorFile(String data) {//Troels
 
+
+    public String writeCompetitorFile(String data) {//Troels
         try {
             FileWriter fileWriter = new FileWriter("competitors.csv", true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -151,6 +146,7 @@ public class FileHandler {
     }
 
 
+
     public ArrayList<String> readTournamentInfo(){//Troels
         String[] data = new String[0];
         ArrayList<String> tournamentInfo = new ArrayList<>();
@@ -162,13 +158,14 @@ public class FileHandler {
                 tournamentInfo.add(Arrays.toString(data));
             }
 
-
         }catch (Exception e){
             System.out.println("Noget gik galt");
         }
 
         return tournamentInfo;
     }
+
+
 
 
     public void setTournamentInfo(String myCompetitor){//Victor
@@ -191,7 +188,6 @@ public class FileHandler {
         }
 
         try {
-
             FileWriter fileWriter = new FileWriter("TournamentInfo.csv", false);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String i:toWriteCompetitors) {
@@ -205,8 +201,9 @@ public class FileHandler {
         } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
-
     }
+
+
 
 
     public String createTournamentInfo(String data){//Troels
@@ -222,7 +219,6 @@ public class FileHandler {
         } catch (Exception e) {
             System.out.println("Noget gik galt....");
         }
-
         return "Fil opdateret!";
     }
 
