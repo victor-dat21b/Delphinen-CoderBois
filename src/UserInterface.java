@@ -28,7 +28,7 @@ public class UserInterface {
                 int userInput = this.in.nextInt();
                 if (userInput == 1) {
 
-                    option1();
+                    createMember();
 
                 } else if (userInput == 2) {
 
@@ -145,7 +145,7 @@ public class UserInterface {
                 --------------------------------------------------""");
     }
 
-    public void option1() {//Troels
+    public void createMember() {//Troels
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
         StringBuilder tournamentInfo = new StringBuilder();
@@ -437,7 +437,6 @@ public class UserInterface {
         }
         controller.clearCacheTournamentInfo();
     }
-
 
     public void updateCompetitorTime() {//Victor
         in.nextLine();

@@ -46,7 +46,6 @@ public class Competitor extends Member {
     }
 
 
-
     public double getCrawlTime() {
         return this.crawlTime;
     }
@@ -62,7 +61,6 @@ public class Competitor extends Member {
     public double getButterflyTime() {
         return this.butterflyTime;
     }
-
 
     @Override
     public String toString() {

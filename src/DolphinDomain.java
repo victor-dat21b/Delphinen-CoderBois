@@ -19,9 +19,11 @@ public class DolphinDomain {
         return files.createTournamentInfo(data);
     }
 
+
     public ArrayList<String> readTournamentInfo() {//Troels
         return files.readTournamentInfo();
     }
+
 
     public int calculateIncome() { //Victor
         int incomeCounter = 0;
@@ -45,20 +47,6 @@ public class DolphinDomain {
         return incomeCounter;
     }
 
-    public String getArreas() { //Victor
-        StringBuilder str = new StringBuilder();
-        ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
-        ArrayList<Member> myExercisors = files.readExerciserFile();
-        myExercisors.addAll(myCompetitors);
-        ArrayList<Member> myMembers = myExercisors; //Redundant but gives visibility to what's happening when reading files and adding them together.
-        for (Member member : myMembers) {
-            if (member.getArrears()) {
-                str.append(member);
-            } else {
-            }
-        }
-        return str.toString();
-    }
 
     public ArrayList<String> searchForCompetitor(String stringUserInput) { //Victor
         ArrayList<Competitor> myArray = files.readCompetitorFile();
@@ -105,10 +93,20 @@ public class DolphinDomain {
         files.editCompetitorFile(myCompetitor, myDiscipline, stringTime, stringDato);
     }
 
-
-    public void clearCache() {
-        this.mySorted.clear();
+    public void setTournamentInformation(int chosenInt, String dataToWrite) {
+        StringBuilder myBuilder = new StringBuilder();
+        String myCompetitor = this.stringSorted.get((chosenInt-1));
+        myCompetitor = myCompetitor.substring(1, myCompetitor.length() - 1);
+        myCompetitor = myCompetitor.replaceAll(" ", "");
+        String[] myCompetitorData = myCompetitor.split(",");
+        myBuilder.append(myCompetitorData[0]);
+        myBuilder.append(",");
+        myBuilder.append(myCompetitorData[1]);
+        myBuilder.append(",");
+        myBuilder.append(dataToWrite);
+        files.setTournamentInfo(myBuilder.toString());
     }
+
 
     public ArrayList<Competitor> sortCompetitorBySenior() { // Lasse
         ArrayList<Competitor> unsortedCompetitor = files.readCompetitorFile();
@@ -130,6 +128,22 @@ public class DolphinDomain {
             }
         }
         return sortedJunior;
+    }
+
+
+    public String getArreas() { //Victor
+        StringBuilder str = new StringBuilder();
+        ArrayList<Competitor> myCompetitors = files.readCompetitorFile();
+        ArrayList<Member> myExercisors = files.readExerciserFile();
+        myExercisors.addAll(myCompetitors);
+        ArrayList<Member> myMembers = myExercisors; //Redundant but gives visibility to what's happening when reading files and adding them together.
+        for (Member member : myMembers) {
+            if (member.getArrears()) {
+                str.append(member);
+            } else {
+            }
+        }
+        return str.toString();
     }
 
     public String getJuniorTopFiveCrawl() { // Lasse
@@ -216,7 +230,6 @@ public class DolphinDomain {
         return topFive.toString();
     }
 
-
     public String getSeniorTopFiveButterfly() { // Lasse
         ArrayList<Competitor> SeniorSwimmer = sortCompetitorBySenior();
         Collections.sort(SeniorSwimmer, new ComparatorButterfly());
@@ -244,6 +257,16 @@ public class DolphinDomain {
         }
         return topFive.toString();
     }
+
+
+    public void clearCache() {
+        this.mySorted.clear();
+    }
+
+    public void clearCacheTrainingInfo() {
+        this.stringSorted.clear();
+    }
+
 
     public String printExerciserList() { // Lasse
         ArrayList<Member> unsortedExerciser = files.readExerciserFile();
@@ -275,29 +298,5 @@ public class DolphinDomain {
                 seniorCompetitor;
     }
 
-    public void clearCacheTrainingInfo() {
-        this.stringSorted.clear();
-    }
-
-    public void setTournamentInformation(int chosenInt, String dataToWrite) {
-        StringBuilder myBuilder = new StringBuilder();
-        String myCompetitor = this.stringSorted.get((chosenInt-1));
-        myCompetitor = myCompetitor.substring(1, myCompetitor.length() - 1);
-        myCompetitor = myCompetitor.replaceAll(" ", "");
-        String[] myCompetitorData = myCompetitor.split(",");
-        myBuilder.append(myCompetitorData[0]);
-        myBuilder.append(",");
-        myBuilder.append(myCompetitorData[1]);
-        myBuilder.append(",");
-        myBuilder.append(dataToWrite);
-        files.setTournamentInfo(myBuilder.toString());
-}
-
 
 }
-
-
-
-
-
-

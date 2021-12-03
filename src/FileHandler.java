@@ -55,6 +55,7 @@ public class FileHandler {
         return myMembers;
     }
 
+
     public void editCompetitorFile(Competitor myCompetitor, String myDiscipline, String stringTime, String stringDato){ //Victor
         ArrayList<String> myStrings = new ArrayList<>();
         StringBuilder myBuilder = new StringBuilder();
@@ -115,7 +116,6 @@ public class FileHandler {
     }
 
 
-
     public String writeExerciserFile(String data) {//Troels
 
         try {
@@ -150,6 +150,7 @@ public class FileHandler {
         return "Medlem oprettet!";
     }
 
+
     public ArrayList<String> readTournamentInfo(){//Troels
         String[] data = new String[0];
         ArrayList<String> tournamentInfo = new ArrayList<>();
@@ -168,6 +169,7 @@ public class FileHandler {
 
         return tournamentInfo;
     }
+
 
     public void setTournamentInfo(String myCompetitor){//Victor
         ArrayList<String> toWriteCompetitors = new ArrayList<>();
@@ -205,6 +207,7 @@ public class FileHandler {
         }
 
     }
+
 
     public String createTournamentInfo(String data){//Troels
 
