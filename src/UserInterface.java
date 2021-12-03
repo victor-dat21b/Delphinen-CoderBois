@@ -97,15 +97,17 @@ public class UserInterface {
         StringBuilder stringBuilder = new StringBuilder();
         StringBuilder stringBuilderDeci = new StringBuilder();
         StringBuilder tournamentInfo = new StringBuilder();
-        StringBuilder date = new StringBuilder();
         String finalString;
         String finalTournamentInfo;
+        String stringAnswer;
+        Integer answer = -1;
         int numberOfDisciplines = 0;
         boolean beenInTournament = false;
         boolean isActive = false;
         boolean isValid = false;
         boolean isCompetitor = false;
         boolean isDone = false;
+        boolean notValid;
 
         System.out.println("Opret nyt medlem");
         in.nextLine();
@@ -114,10 +116,28 @@ public class UserInterface {
         stringBuilder.append(in.nextLine()).append(',');
         tournamentInfo.append(stringBuilder);
 
-        int answer;
+        do{
+            System.out.println("Alder:");
+            try {
+                answer = Integer.parseInt(in.nextLine());
+                notValid = true;
+            } catch (Exception e) {
+                stringAnswer = String.valueOf(answer);
+                notValid = false;
+                while (!notValid) {
+                    if (stringAnswer instanceof String) {
+                        System.out.println("Alder er ikke bogstaver!");
+                        break;
+                    } else {
+                        notValid = true;
+                    }
+                }
+            }
+            if(notValid){
+                isDone = true;
+            }
+        }while(!isDone);
 
-        System.out.println("Alder:");
-        answer = Integer.parseInt(in.nextLine());
         stringBuilder.append(answer).append(',');
         tournamentInfo.append(answer).append(',');
 
@@ -269,31 +289,31 @@ public class UserInterface {
 
                 }
 
-                //stringBuilder.append(beenInTournament);
-                //stringBuilder.append(',');
-                stringBuilder.append(stringBuilderDeci);
-
-
-                tournamentInfo.replace(tournamentInfo.length() - 1, tournamentInfo.length(), "");
-                finalTournamentInfo = tournamentInfo.toString();
-
-                stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), "");
-
-                finalString = stringBuilder.toString();
-
-                if (isCompetitor) {
-                    System.out.println(controller.createMemberC(finalString));
-                    System.out.println(controller.createTournamentInfo(finalTournamentInfo));
-                } else {
-                    System.out.println(controller.createMemberE(finalString));
-                }
             }
 
+            stringBuilder.append(beenInTournament);
+            stringBuilder.append(',');
+        }
+        stringBuilder.append(stringBuilderDeci);
+
+
+        tournamentInfo.replace(tournamentInfo.length() - 1, tournamentInfo.length(), "");
+        finalTournamentInfo = tournamentInfo.toString();
+
+        stringBuilder.replace(stringBuilder.length() - 1, stringBuilder.length(), "");
+
+        finalString = stringBuilder.toString();
+
+        if (isCompetitor) {
+            System.out.println(controller.createMemberC(finalString));
+            System.out.println(controller.createTournamentInfo(finalTournamentInfo));
+        } else {
+            System.out.println(controller.createMemberE(finalString));
         }
     }
 
 
-    public void setTournamentInformation() {//Victor
+    public void setTournamentInformation() {//Victor & Troels
         String[] dicipline = {"crawl", "rygcrawl", "brystsvømning", "butterfly"};
         StringBuilder myBuilder = new StringBuilder();
         String textAnswer;
@@ -309,10 +329,10 @@ public class UserInterface {
         }
 
         if (!chosenList.isEmpty()) {
-            System.out.println("Insert int for what competitor you wish to choose");
+            System.out.println("Brug tal til at vælge den atlet du vil ændre i");
             int chooseCompetitorInt = in.nextInt();
             if (chooseCompetitorInt < 1 || chooseCompetitorInt > chosenList.size()) {
-                System.out.println("Error wrong int");
+                System.out.println("Fejl! ikke et tal");
             } else {
                 in.nextLine();
                 System.out.println("Indtast navnet for Stævnet");
@@ -439,7 +459,6 @@ public class UserInterface {
             System.out.println("Forkert input, returnere til menu.");
         }
     }
-
 
     public void startScreen() {//Lasse
         System.out.println("""
