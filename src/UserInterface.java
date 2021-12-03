@@ -64,6 +64,7 @@ public class UserInterface {
                 } else if (userInput == 6) { // Lasse
                     getTopFive();
 
+
                 } else if (userInput == 7) {
                     System.out.println("Medlemmer i restance:");
                     System.out.println(controller.getArreas());
